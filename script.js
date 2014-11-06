@@ -71,11 +71,4 @@ function circle(e) {
       top : e.pageY
     })
   );
-} 
-
-//You may also like Plugin
-alsolike(
-  "vlrnd", "CSS Only iPhone 6",
-  "nKCsI", "Semantic Sandwich",
-  "whxbF", "CSS Only Bending Effect" 
-);
+}
