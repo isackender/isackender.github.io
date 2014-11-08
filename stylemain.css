@@ -1,4 +1,4 @@
-//////////////////////////////////----- RESET CSS -----//////////////////////////////////
+/*----------------------- RESET CSS -----------------------*/
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -42,18 +42,101 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-//////////////////////////////////----- RESET CSS -----//////////////////////////////////
+/*----------------------- RESET CSS -----------------------*/
 
-body, ul, li, p, a {
+
+body {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 300;
+	background-color: #FFFFFF;
+}
+
+.header {
+	margin: 15px auto 0px;
+	padding: 15px;
+	width: 870px;
+	height: 40px;
+	background-color: #BEBEBE;
+	text-align: center;
+	line-height: 40px;
+	color: #000010;
+}
+
+.content {
+	margin: 0 auto;
+	padding: 15px;
+	width: 870px;
+	background-color: #EFEFEF;
+	color: #000010;
+}
+
+.footer {
+	margin: 0 auto;
+	padding: 15px;
+	width: 870px;
+	height: 40px;
+	background-color: #BEBEBE;
+	text-align: center;
+	line-height: 40px;
+	color: #000010;
+}
+
+h1 {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+	font-size: 2em;
 }
 
 h3 {
 	font-family: 'Oswald', sans-serif;
 	font-weight: 400;
-<<<<<<< HEAD
+	font-size: 1.5em;
 }
-=======
+
+table {
+	width: 100%;
 }
->>>>>>> origin/master
+
+td > a {
+	vertical-align: middle;
+}
+
+a {
+	text-decoration: none;
+	color: #000010;
+	animation: links 15s infinite linear;
+	-webkit-animation: links 15s infinite linear;
+}
+
+ul {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+li {
+	margin-bottom: 20px;
+}
+
+.tit {
+	font-family: 'Oswald', sans-serif;
+	font-weight: 400;
+}
+
+@-webkit-keyframes links {
+	0% { color: #000010; }
+	50% { color: #4e4eff; }
+	100% { color: #000010; }
+}
+
+@keyframes links {
+	0% { color: #000010; }
+	50% { color: #4e4eff; }
+	100% { color: #000010; }
+}
+
+/*
+
+0% { color: #40b25e; }
+	50% { color: #2b6eba; }
+	100% { color: #40b25e; }
+*/
