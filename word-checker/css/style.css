@@ -58,12 +58,12 @@ html, body {
     background-color: #efb94c;
     color: #363732;
 }
-*::selection {
-  background-color: #1f1f1f;
+input::selection, p::selection {
+  background: #1f1f1f;
   color: #efb94c;
 }
-*::-moz-selection {
-  background-color: #1f1f1f;
+input::-moz-selection, p::-moz-selection {
+  background: #1f1f1f;
   color: #efb94c;
 }
 input[type=text] {
