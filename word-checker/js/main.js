@@ -13,7 +13,7 @@ function main(objform) {
     } else if (countWords(word)==1){
         text += "<p><span class=\"italic\">"+word+"</span> has "+countWords(word)+" word.";
     } else {
-        text += "<p><span class=\"italic\">"+word+"</span> has "+countWords(word)+" word.";
+        text += "<p><span class=\"italic\">"+word+"</span> has "+countWords(word)+" words.";
     }
 
     document.getElementById("response").innerHTML = text;
