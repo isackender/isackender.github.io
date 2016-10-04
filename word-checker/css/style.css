@@ -59,12 +59,12 @@ html, body {
     color: #363732;
 }
 *::selection {
-  background: #1f1f1f;
-  color: #efb94c;
+    background: #1f1f1f;
+    color: #efb94c;
 }
 *::-moz-selection {
-  background: #1f1f1f;
-  color: #efb94c;
+    background: #1f1f1f;
+    color: #efb94c;
 }
 input[type=text] {
     font-family: 'Lora', serif;
@@ -74,7 +74,6 @@ input[type=text] {
     border: 0px solid;
     background-color: rgba(0,0,0,0);
     border-bottom: 1px solid #b19242;
-    display: inline-block;
     -webkit-transition-property: color;
        -moz-transition-property: color;
          -o-transition-property: color;
@@ -106,7 +105,6 @@ input[type=submit] {
     padding: 0 10px;
     vertical-align: bottom;
     cursor: pointer;
-    display: inline-block;
 }
 input[type=submit]:focus {
     font-family: 'Lora', serif;
@@ -149,6 +147,7 @@ input[type=submit]:active {
 }
 #response {
     text-align: left;
+    max-width: 571px;
 }
 #content {
     width: 100%;
