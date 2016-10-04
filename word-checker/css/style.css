@@ -74,6 +74,7 @@ input[type=text] {
     border: 0px solid;
     background-color: rgba(0,0,0,0);
     border-bottom: 1px solid #b19242;
+    display: inline-block;
     -webkit-transition-property: color;
        -moz-transition-property: color;
          -o-transition-property: color;
@@ -105,6 +106,7 @@ input[type=submit] {
     padding: 0 10px;
     vertical-align: bottom;
     cursor: pointer;
+    display: inline-block;
 }
 input[type=submit]:focus {
     font-family: 'Lora', serif;
@@ -143,7 +145,7 @@ input[type=submit]:active {
     margin: 0px auto;
     padding-top: 20px;
     text-align: center;
-    max-width: 571px;
+    min-width: 571px;
 }
 #response {
     text-align: left;
