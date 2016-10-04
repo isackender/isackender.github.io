@@ -1,4 +1,4 @@
-function inputword(objform) {
+function inputWord(objform) {
     var word = objform.receivedword.value;
     var text;
 
