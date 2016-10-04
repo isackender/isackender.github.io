@@ -58,6 +58,14 @@ html, body {
     background-color: #efb94c;
     color: #363732;
 }
+body::selection {
+  background-color: #1f1f1f;
+  color: #efb94c;
+}
+body::-moz-selection {
+  background-color: #1f1f1f;
+  color: #efb94c;
+}
 input[type=text] {
     font-family: 'Lora', serif;
     padding-bottom: 5px;
