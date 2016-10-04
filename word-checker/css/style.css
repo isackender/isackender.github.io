@@ -58,11 +58,11 @@ html, body {
     background-color: #efb94c;
     color: #363732;
 }
-body::selection {
+*::selection {
   background-color: #1f1f1f;
   color: #efb94c;
 }
-body::-moz-selection {
+*::-moz-selection {
   background-color: #1f1f1f;
   color: #efb94c;
 }
