@@ -1,0 +1,165 @@
+/*----------------------- RESET CSS -----------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/*----------------------- RESET CSS -----------------------*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-size: 1em;
+    font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    font-style: normal;
+    font-variant: normal;
+}
+html, body {
+    width: 100%;
+    height: 100%;
+    background-color: #efb94c;
+    color: #363732;
+}
+input[type=text] {
+    font-family: 'Lora', serif;
+    padding-bottom: 5px;
+    font-size: 40px;
+    color: #615a3f;
+    border: 0px solid;
+    background-color: rgba(0,0,0,0);
+    border-bottom: 1px solid #b19242;
+    -webkit-transition-property: color;
+       -moz-transition-property: color;
+         -o-transition-property: color;
+            transition-property: color;
+    -webkit-transition-duration: 0.5s;
+       -moz-transition-duration: 0.5s;
+         -o-transition-duration: 0.5s;
+            transition-duration: 0.5s;
+    -webkit-transition-timing-function: linear;
+       -moz-transition-timing-function: linear;
+         -o-transition-timing-function: linear;
+            transition-timing-function: linear;
+}
+input[type=text]:focus {
+    border: 0px solid;
+    color: #1f1f1f;
+    font-size: 40px;
+    border-bottom: 1px solid #b19242;
+    outline: none;
+}
+input[type=submit] {
+    font-family: 'Lora', serif;
+    padding-bottom: 5px;
+    font-size: 26px;
+    line-height: 57px;
+    color: #efb94c;
+    border: 0px solid;
+    background-color: #1f1f1f;
+    padding: 0 10px;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+input[type=submit]:focus {
+    font-family: 'Lora', serif;
+    padding-bottom: 5px;
+    font-size: 26px;
+    line-height: 57px;
+    color: #efb94c;
+    border: 0px solid;
+    background-color: #1f1f1f;
+    padding: 0 10px;
+    vertical-align: bottom;
+    outline: none;
+}
+input[type=submit]:active {
+    font-family: 'Lora', serif;
+    padding-bottom: 5px;
+    font-size: 26px;
+    line-height: 57px;
+    color: #efb94c;
+    border: 0px solid;
+    background-color: #615a3f;
+    padding: 0 10px;
+    vertical-align: bottom;
+    outline: none;
+}
+#particles-js {
+    position: absolute;
+    z-index: 0;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: 100%;
+    width: 100%;
+}
+#response, #question {
+    position: relative;
+    margin: 0px auto;
+    padding-top: 20px;
+    text-align: center;
+    max-width: 571px;
+}
+#response {
+    text-align: left;
+}
+#content {
+    width: 100%;
+}
+p {
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+}
+b {
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 20px;
+}
+.italic {
+    font-style: italic;
+    font-family: 'Crimson Text', serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+}
