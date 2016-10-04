@@ -26,7 +26,7 @@ function isPalindrome(sentence) {
     formattedSentence = formattedSentence.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
     formattedSentence = formattedSentence.replace(/\s+/g,"");
     var sentenceLength = formattedSentence.length;              // Calculate the length of the sentence (without blank spaces)
-    var halft = Math.floor(sentenceLength/2);
+    var half = Math.floor(sentenceLength/2);
 
     var correct;
 
