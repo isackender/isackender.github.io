@@ -58,11 +58,11 @@ html, body {
     background-color: #efb94c;
     color: #363732;
 }
-input::selection, p::selection {
+*::selection {
   background: #1f1f1f;
   color: #efb94c;
 }
-input::-moz-selection, p::-moz-selection {
+*::-moz-selection {
   background: #1f1f1f;
   color: #efb94c;
 }
