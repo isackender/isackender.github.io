@@ -1,67 +1,67 @@
-function inputpalabra(respuestaform) {
-    var palabra = respuestaform.palabrarecibida.value;
-    var texto;
+function inputword(objform) {
+    var word = objform.receivedword.value;
+    var text;
 
-    if(esPalindromo(palabra)){
-        texto ="<p><span class=\"italic\">"+palabra+"</span> <b>SÍ</b> es palíndromo.</p>";
+    if(isPalindrome(word)){
+        text ="<p><span class=\"italic\">"+word+"</span> <b>IS</b> a palindrome.</p>";
     } else {
-        texto ="<p><span class=\"italic\">"+palabra+"</span> <b>NO</b> es palíndromo.</p>";
+        text ="<p><span class=\"italic\">"+word+"</span> <b>IS NOT</b> a palindrome.</p>";
     }
 
-    if (cuentaPalabras(palabra)==0){
-        texto += "<p><span class=\"italic\">"+palabra+"</span> no tiene palabras.";
-    } else if (cuentaPalabras(palabra)==1){
-        texto += "<p><span class=\"italic\">"+palabra+"</span> tiene "+cuentaPalabras(palabra)+" palabra.";
+    if (countWords(word)==0){
+        text += "<p><span class=\"italic\">"+word+"</span> does not have any words.";
+    } else if (countWords(word)==1){
+        text += "<p><span class=\"italic\">"+word+"</span> has "+countWords(word)+" word.";
     } else {
-        texto += "<p><span class=\"italic\">"+palabra+"</span> tiene "+cuentaPalabras(palabra)+" palabras.";
+        text += "<p><span class=\"italic\">"+word+"</span> has "+countWords(word)+" word.";
     }
 
-    document.getElementById("response").innerHTML = texto;
+    document.getElementById("response").innerHTML = text;
 }
 
-function esPalindromo(frase) {
-    var fraseCorrecta = frase.trim();                   // Formateamos la frase
-    fraseCorrecta = fraseCorrecta.toLowerCase();
-    fraseCorrecta = removeDiacritics(fraseCorrecta);
-    fraseCorrecta = fraseCorrecta.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");   // 
-    fraseCorrecta = fraseCorrecta.replace(/\s+/g,"");   // eliminamos espacios intermedios
-    var longitud = fraseCorrecta.length;                // calculamos la longitud de la frase (sin espacios)
-    var mitad = Math.floor(longitud/2);                 // calculamos la mitad (redondeada hacia abajo)
+function isPalindrome(sentence) {
+    var formattedSentence = sentence.trim();                   // Formatting the sentence
+    formattedSentence = formattedSentence.toLowerCase();
+    formattedSentence = removeDiacritics(formattedSentence);
+    formattedSentence = formattedSentence.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    formattedSentence = formattedSentence.replace(/\s+/g,"");
+    var sentenceLength = formattedSentence.length;              // Calculate the length of the sentence (without blank spaces)
+    var halft = Math.floor(sentenceLength/2);
 
-    var correcto;
+    var correct;
 
-    for (var i=0; i<mitad; i++) {
-        var j = longitud-1-i;
-        var a = fraseCorrecta.charAt(i);                // Guadamos el primer y último caracter.
-        var b = fraseCorrecta.charAt(j);
+    for (var i=0; i<half; i++) {
+        var j = sentenceLength-1-i;
+        var a = formattedSentence.charAt(i);                    // Save first and last char.
+        var b = formattedSentence.charAt(j);
 
-        if (a == b) {                                   // Los comparamos.
-            correcto = true;
+        if (a == b) {                                           // Compare them.
+            correct = true;
         } else {
-            correcto = false;
-            return correcto;
+            correct = false;
+            return correct;
         }
     };
 
-    return correcto;
+    return correct;
 }
 
-function cuentaPalabras(frase){
-    var numPalabras = 0;
-    var fraseCorrecta = frase.trim();                   // Formateamos la frase
-    fraseCorrecta = fraseCorrecta.replace(/\s+/g," ");  // comprimimos espacios intermedios
-    fraseCorrecta = fraseCorrecta.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");   // eliminamos signos de puntuación
-    var longitudFrase = fraseCorrecta.length;
+function countWords(sentence){
+    var numWords = 0;
+    var formattedSentence = sentence.trim();                    // Formatting the sentence
+    formattedSentence = formattedSentence.replace(/\s+/g," ");
+    formattedSentence = formattedSentence.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,"");
+    var sentenceLength = formattedSentence.length;
 
-    if(fraseCorrecta!=" " && longitudFrase>0){          // Si la String no es " " y la longitud es mayor que 0
-        numPalabras++;                                  // Hay 1 palabra como mínimo
-        for (var i=0; i<longitudFrase; i++) {
-            if(fraseCorrecta.charAt(i)==" "){           // Por cada espacio que encontremos,
-                numPalabras++;                          // aumentamos el número de palabras
+    if(formattedSentence!=" " && sentenceLength>0){             // If the sentence isn't " " and its length is grater than 0
+        numWords++;                                             // There is 1 word at least.
+        for (var i=0; i<sentenceLength; i++) {
+            if(formattedSentence.charAt(i)==" "){               // For each blank space found,
+                numWords++;                                     // increase the number of words.
             }
         };
     } else {
-        return numPalabras;
+        return numWords;
     }
-    return numPalabras;
+    return numWords;
 }
