@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="e">
+<head>
+    <meta charset="UTF-8">
+    <title>Fecha</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+
+<div style="display:flex;justify-content:center;align-items:center;width:100%;height:100%;">
+  <div style="width:570px;">
+
+    <div id="question">
+      <form id="dateform" action="javascript:main(document.forms.dateform)">
+        <select id="selectmonth">
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+        <input type="text" name="year" maxlength="4"/>
+        <input type="submit" value="Back to the future"/>
+      </form>
+    </div>
+
+    <div id="response">
+
+      <h2 id="titulo"></h2>
+
+      <table id="tabla">
+        <thead>
+          <tr>
+            <th>Lunes</th><th>Martes</th><th>Miércoles</th><th>Jueves</th><th>Viernes</th><th>Sábado</th><th>Domingo</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpotabla"></tbody>
+      </table>
+      
+    </div>
+
+  </div>
+</div>
+
+<script type="text/javascript" src="js/script.js"></script>
+
+</body>
+</html>
