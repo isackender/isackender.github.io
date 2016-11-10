@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" id="title"><img src="img/hanamura-title-h.png" class="img-responsive col-centered" alt="Hanamura"></div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div id="tree-container">
+        <div id="tree"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-6" id="sentence"><img src="img/sentence-right.png" class="img-responsive" alt="Through the dragon’s breath, even the soul freezes. Through the dragon’s heart, the spirit exuberates."></div>
+  </div>
+</div>
+  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+
+(function($) {
+  $.petal = function(settings) {
+    $.petal.settings = settings;
+    $.petal.eleHeight = $($.petal.settings.on).height();
+    $.petal.eleWidth = $($.petal.settings.on).width();
+
+    var off = $($.petal.settings.on).offset();
+    $.petal.offsetTop = off.top;
+    $.petal.offsetLeft = off.left;
+
+    if($.petal.preloadImages()){
+      for (i = 0; i < $.petal.settings.total; i++){
+         $.petal.fall($.petal.create($.petal.settings.images[$.petal.random(($.petal.settings.images).length)]));
+      }
+    }
+    return;
+  };
+
+  // Functions of petal
+
+  $.petal.create = function(img){
+    spark = $('<img>').attr({'src' : img}).hide();
+    $($.petal.settings.on).append(spark);
+    return spark.css({
+        'position': 'relative',
+        'z-index': $.petal.random(20),
+        top: $.petal.eleHeight-380+$.petal.random(20)
+      }).show(); 
+  };
+
+  $.petal.preloadImages = function() {
+    var preloads = new Object();
+    for (i = 0; i < ($.petal.settings.images).length; i++){  
+      preloads[i] = new Image(); preloads[i].src =  $.petal.settings.images[i];
+    }
+    return true;
+  };
+
+  $.petal.fall = function(sp) {
+    $(sp).animate({
+      top: 350+$.petal.random(340),
+      opacity: $.petal.opacity($.petal.settings.decay),
+    },
+    (($.petal.random(10) + 5) * 1000),
+    function(){
+      $.petal.disappear(sp)
+    });
+  };
+
+  $.petal.disappear = function(sp) {
+    $(sp).animate({
+      opacity: 0,
+    },
+    (200),
+    function(){
+      $.petal.ascend(sp)
+    });
+  }
+
+  $.petal.ascend = function(sp) {
+    $(sp).animate({
+      top: $.petal.eleHeight-380+$.petal.random(20),
+      opacity: 1
+    },
+    (($.petal.random(10) + 5) * 1),
+    function(){
+      $.petal.fall(sp)
+    });
+  };
+
+  $.petal.random = function(max) {
+    return Math.ceil(Math.random() * max) - 1;
+  };
+
+  $.petal.opacity = function(min) {
+    op= Math.random();
+    if(op < min)
+      return 0;
+    else
+      return 1;
+  }; 
+})(jQuery);
+
+
+$.petal({
+  images: ["img/particles/0.png",
+    "img/particles/1.png",
+    "img/particles/2.png",
+    "img/particles/3.png",
+    "img/particles/4.png",
+    "img/particles/5.png",
+    "img/particles/6.png",
+    "img/particles/7.png",
+    "img/particles/8.png",
+    "img/particles/9.png",
+    "img/particles/10.png",
+    "img/particles/11.png",
+    "img/particles/12.png",
+    "img/particles/13.png",
+    "img/particles/14.png",
+    "img/particles/15.png",
+    "img/particles/16.png",
+    "img/particles/17.png",
+    "img/particles/18.png",
+    "img/particles/19.png",
+    "img/particles/20.png"
+  ],
+  total : 20,   //Number of leaves
+  ofTop: 0,     //Offset top
+  ofLeft: 0,    //Offset left
+  decay: 0.6,   //Decay of the petals (percentage of decay)
+  on: '#tree'   //jQuery selector
+});
+
+
+
+
+
+</script>
+</body>
+</html>
