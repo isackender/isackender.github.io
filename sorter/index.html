@@ -13,34 +13,42 @@
     <div id="container">
       <img id="image-title" src="sorter.png" alt="Overwatch sorter">
         <table>
-            <thead><th>Player</th><th>Role</th></thead>
+            <thead><th colspan="2">Player</th><th colspan="2">Role</th></thead>
             <tbody>
                 <tr>
-                    <td><input type="text" placeholder="Player 1" value=""></td>
-                    <td id="p0" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 1"></td>
+                    <td id="p0" colspan="2" class="role"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Player 2"></td>
-                    <td id="p1" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 2"></td>
+                    <td id="p1" colspan="2" class="role"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Player 3"></td>
-                    <td id="p2" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 3"></td>
+                    <td id="p2" colspan="2" class="role"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Player 4"></td>
-                    <td id="p3" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 4"></td>
+                    <td id="p3" colspan="2" class="role"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Player 5"></td>
-                    <td id="p4" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 5"></td>
+                    <td id="p4" colspan="2" class="role"></td>
                 </tr>
                 <tr>
-                    <td><input type="text" placeholder="Player 6"></td>
-                    <td id="p5" class="role"></td>
+                    <td colspan="2"><input type="text" class="player" placeholder="Player 6"></td>
+                    <td id="p5" colspan="2" class="role"></td>
                 </tr>
             </tbody>
         </table>
+
+        <div id="numbers-container">
+          <div>Attack <input type="number" class="number attack"></div>
+          <div>Defense <input type="number" class="number defense"></div>
+          <div>Tank <input type="number" class="number tank"></div>
+          <div>Healer <input type="number" class="number healer"></div>
+        </div>
+
         <button>ROLL</button>
     </div>
   </div>
