@@ -137,6 +137,10 @@ $("button").click(function() {
   var numplayers = 0;
 
   var ini = 0;
+    
+  $(".role").each(function(){
+    $(this).html("");
+  });
 
   for (var i = 0; i < numinputs; i++) {
     var player = $("input:eq("+i+")").val();
