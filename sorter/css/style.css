@@ -70,16 +70,16 @@ th {
 td {
   border: 1px solid #999999;
 }
-input[type="text"]:focus::-webkit-input-placeholder {color: #111111;}
-input[type="text"]:focus:-moz-placeholder {color: #111111;}
-input[type="text"]:focus::-moz-placeholder {color: #111111;}
-input[type="text"]:focus:-ms-input-placeholder {color: #111111;}
-input[type="text"]:focus{
+input:focus::-webkit-input-placeholder {color: #111111;}
+input:focus:-moz-placeholder {color: #111111;}
+input:focus::-moz-placeholder {color: #111111;}
+input:focus:-ms-input-placeholder {color: #111111;}
+input:focus{
   outline: none;
   background-color: #999999;
   color: #111111;
 }
-input[type="text"] {
+input {
   font-size: 0.8em;
   width: 200px;
   border: none;
@@ -109,6 +109,21 @@ td.role{
 }
 .healer{
   background-color: #43b957;
+}
+div#numbers-container{
+  margin-top: 15px;
+}
+div#numbers-container div{
+  width: 67px;
+  display: inline-block;
+  font-size: 0.8em;
+  text-align: center;
+}
+.number{
+  display: block;
+  margin-top: 3px;
+  width: 65px;
+  font-size: 1em;
 }
 button {
   margin-top: 15px;
