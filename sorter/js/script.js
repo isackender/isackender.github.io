@@ -1,13 +1,33 @@
 $("button").click(function() {
-  var roles = ["Attack", "Defense", "Tank", "Healer"];
+  for (var i = 0; i < $(".number").length; i++) {
+    if ($(".number:eq("+i+")").val() == "") {
+      $(".number:eq("+i+")").val(0);
+    };
+  };
 
-  var roles5 = ["Attack", "Defense", "Tank", "Healer", "Healer"];
-  var roles6 = ["Attack", "Defense", "Tank", "Tank", "Healer", "Healer"];
+  var numatk = parseInt($(".number:eq(0)").val());
+  var numdef = parseInt($(".number:eq(1)").val());
+  var numtnk = parseInt($(".number:eq(2)").val());
+  var numhlr = parseInt($(".number:eq(3)").val());
 
-  var numinputs = $("input").length;
-  var numplayers = 0;
+  var roles = [];
 
-  var ini = 0;
+  //Attack
+  for (var i = 0; i < numatk; i++) {
+    roles.push("Attack");
+  };
+  //Defense
+  for (var i = 0; i < numdef; i++) {
+    roles.push("Defense");
+  };
+  //Tank
+  for (var i = 0; i < numtnk; i++) {
+    roles.push("Tank");
+  };
+  //Healer
+  for (var i = 0; i < numhlr; i++) {
+    roles.push("Healer");
+  };
     
   $(".role").each(function(){
     $(this).html("");
@@ -15,140 +35,37 @@ $("button").click(function() {
     $(this).addClass("role");
   });
 
-  for (var i = 0; i < numinputs; i++) {
+  var randomroles = shuffle(roles);
+  var ini = 0;
+
+  for (var i = 0; i < $(".player").length; i++) {
     var player = $("input:eq("+i+")").val();
     if (player != "") {
-      numplayers++;
+      switch(randomroles[ini]){
+        case "Attack":
+          $("#p"+i+"").removeClass();
+          $("#p"+i+"").addClass("role attack");
+          $("#p"+i+"").html(randomroles[ini]);
+          break;
+        case "Defense":
+          $("#p"+i+"").removeClass();
+          $("#p"+i+"").addClass("role defense");
+          $("#p"+i+"").html(randomroles[ini]);
+          break;
+        case "Tank":
+          $("#p"+i+"").removeClass();
+          $("#p"+i+"").addClass("role tank");
+          $("#p"+i+"").html(randomroles[ini]);
+          break;
+        case "Healer":
+          $("#p"+i+"").removeClass();
+          $("#p"+i+"").addClass("role healer");
+          $("#p"+i+"").html(randomroles[ini]);
+          break;
+      }
+      ini++;
     };
   };
-
-  switch(numplayers){
-    case 4:
-      var randomroles = shuffle(roles);
-      for (var i = 0; i < numinputs; i++) {
-        var player = $("input:eq("+i+")").val();
-        if (player != "") {
-          switch(randomroles[ini]){
-            case "Attack":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role attack");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Defense":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role defense");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Tank":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role tank");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Healer":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role healer");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-          }
-          ini++;
-        };
-      };
-      ini = 0;
-      break;
-    case 5:
-      var randomroles = shuffle(roles5);
-      for (var i = 0; i < numinputs; i++) {
-        var player = $("input:eq("+i+")").val();
-        if (player != "") {
-          switch(randomroles[ini]){
-            case "Attack":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role attack");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Defense":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role defense");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Tank":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role tank");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Healer":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role healer");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-          }
-          ini++;
-        };
-      };
-      ini = 0;
-      break;
-    case 6:
-      var randomroles = shuffle(roles6);
-      for (var i = 0; i < numinputs; i++) {
-        var player = $("input:eq("+i+")").val();
-        if (player != "") {
-          switch(randomroles[ini]){
-            case "Attack":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role attack");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Defense":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role defense");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Tank":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role tank");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-            case "Healer":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role healer");
-              $("#p"+i+"").html(randomroles[ini]);
-              break;
-          }
-          ini++;
-        };
-      };
-      ini = 0;
-      break;
-    default:
-      for (var i = 0; i < numinputs; i++) {
-        var player = $("input:eq("+i+")").val();
-        if (player != "") {
-          var randomrole = roles[Math.floor(Math.random()*roles.length)];
-          switch(randomrole){
-            case "Attack":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role attack");
-              $("#p"+i+"").html(randomrole);
-              break;
-            case "Defense":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role defense");
-              $("#p"+i+"").html(randomrole);
-              break;
-            case "Tank":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass("role tank");
-              $("#p"+i+"").html(randomrole);
-              break;
-            case "Healer":
-              $("#p"+i+"").removeClass();
-              $("#p"+i+"").addClass(" role healer");
-              $("#p"+i+"").html(randomrole);
-              break;
-          }
-        };
-      };
-  }
 
   function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
