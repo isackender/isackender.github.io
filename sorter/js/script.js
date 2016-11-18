@@ -11,6 +11,8 @@ $("button").click(function() {
     
   $(".role").each(function(){
     $(this).html("");
+    $(this).removeClass();
+    $(this).addClass("role");
   });
 
   for (var i = 0; i < numinputs; i++) {
