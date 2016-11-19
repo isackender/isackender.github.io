@@ -50,8 +50,8 @@ html, body {
   background-color: #1e3152;
   color: #FFFFFF;
 }
-*::selection {background-color: #1e3152;}
-*::-moz-selection {background-color: #1e3152;}
+*::selection {background-color: #1e3152; color:#FFFFFF;}
+*::-moz-selection {background-color: #1e3152; color:#FFFFFF;}
 div#container{
   text-align: center;
 }
