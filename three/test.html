@@ -81,7 +81,7 @@ document.body.appendChild( renderer.domElement );
 var loader = new THREE.TextureLoader();
 loader.load( 'https://i.imgur.com/zKtZVF7.png', function ( texture ) {
   var geometry = new THREE.PlaneGeometry( 5,5,5,5 );
-  var material = new THREE.MeshBasicMaterial( { map: texture} );
+  var material = new THREE.MeshBasicMaterial( { map: texture, transparent: true, opacity: 0.5 } );
   var mesh = new THREE.Mesh( geometry, material );
   scene.add( mesh );
 } );
