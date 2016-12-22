@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Three.js</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://threejs.org/build/three.min.js"></script>
+    <script src="http://threejs.org/examples/js/controls/OrbitControls.js"></script>
+</head>
+<body>
+    <script>
+var scene = new THREE.Scene();
+var clrClear = 0x131313;
+
+var camera = new THREE.PerspectiveCamera(
+    60,                                   // Field of view
+    window.innerWidth/window.innerHeight, // Aspect ratio
+    0.1,                                  // Near clipping pane
+    1000                                  // Far clipping pane
+);
+camera.position.set(0,0,30);
+camera.lookAt(new THREE.Vector3(0,0,0));
+
+// Create a renderer
+var renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize( window.innerWidth, window.innerHeight );    // Size of window
+renderer.setClearColor( clrClear );                           // Background color
+
+// Append to the document
+document.body.appendChild( renderer.domElement );
+
+var loader = new THREE.TextureLoader();
+loader.load( 'http://i.imgur.com/zKtZVF7.png', function ( texture ) {
+  var geometry = new THREE.PlaneGeometry( 5,5,5,5 );
+  var material = new THREE.MeshBasicMaterial( { map: texture} );
+  var mesh = new THREE.Mesh( geometry, material );
+  scene.add( mesh );
+} );
+
+
+
+// ----------------- GEOMETRIES ----------------- //
+var gPlane = new THREE.PlaneGeometry( 5,5,5,5 );
+
+// ----------------- MATERIALS ----------------- //
+var mPlane = new THREE.MeshBasicMaterial( {color: 0xffffff, wireframe: false} );
+
+// ----------------- MESHES ----------------- //
+var plane = new THREE.Mesh( gPlane, mPlane );
+//plane.rotation.x += Math.PI / 2; // 90º
+//scene.add( plane );
+
+// ----------------- LIGHTS ----------------- //
+
+// ----------------- EXTRAS ----------------- //
+var axisHelper = new THREE.AxisHelper( 5 );
+scene.add( axisHelper );
+
+// Add an orbit control which allows us to move around the scene. See the three.js example for more details
+// https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.
+var controls = new THREE.OrbitControls( camera, renderer.domElement );
+controls.target.set(0,0,0);
+controls.addEventListener( 'change', function() { render(); } ); // add this only if there is no animation loop (requestAnimationFrame)
+
+function render() {
+  renderer.render(scene, camera);
+}
+
+// Start window resize
+window.addEventListener( 'resize', onWindowResize, false );
+
+function onWindowResize(){
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize( window.innerWidth, window.innerHeight );
+  render();
+}
+//End window resize
+
+function animate() {
+  requestAnimationFrame(animate);
+  // Start animation
+
+  // End animation
+  render();
+}
+
+animate();
+    </script>
+</body>
+</html>
