@@ -81,7 +81,7 @@ document.body.appendChild( renderer.domElement );
 var loader = new THREE.TextureLoader();
 loader.load( 'https://i.imgur.com/zKtZVF7.png', function ( texture ) {
   var geometry = new THREE.PlaneGeometry( 5,5,5,5 );
-  var material = new THREE.MeshLambertMaterial( { map: texture, alphaMap: 'https://i.imgur.com/uFZ8ZL0.png', morphTargets: true } );
+  var material = new THREE.MeshLambertMaterial( { map: texture, alphaMap: 'https://i.imgur.com/uFZ8ZL0.png' } );
   var mesh = new THREE.Mesh( geometry, material );
   scene.add( mesh );
 } );
