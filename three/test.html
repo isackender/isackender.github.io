@@ -79,7 +79,7 @@ renderer.setClearColor( clrClear );                           // Background colo
 document.body.appendChild( renderer.domElement );
 
 var loader = new THREE.TextureLoader();
-loader.load( 'http://i.imgur.com/zKtZVF7.png', function ( texture ) {
+loader.load( 'https://i.imgur.com/zKtZVF7.png', function ( texture ) {
   var geometry = new THREE.PlaneGeometry( 5,5,5,5 );
   var material = new THREE.MeshBasicMaterial( { map: texture} );
   var mesh = new THREE.Mesh( geometry, material );
