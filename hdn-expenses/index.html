@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expenses 2017</title>
+  <!-- Jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <!-- Normalize css -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style type="text/css">
+*                           { background-color: #eaeaea; color: #afafaf;  }
+body                        { width: 100%;}
+div#loader                  { width: 100vw; height: 100vh; position: absolute; top: 0px; }
+h2                          { text-align: center; font-weight: normal; color: #565656; margin-top: 2em; margin-bottom: 2em; }
+div.separator               { height: 200px; }
+div.container               { width: 650px; height: 200px; margin-left: auto; margin-right: auto; }
+div.month                   { width: 50px; display: inline-block; position: relative; vertical-align: top; }
+div.month div               { width: 50px; display: block; bottom: 0px; border-bottom: 1px solid #eaeaea; }
+div.month div:hover         { background-image: url(http://i.imgur.com/5TMmkjS.png); background-repeat: repeat; cursor: pointer; }
+div.titles                  { margin: 0; margin-bottom: 0.2em; padding: 0;}
+p.name-month                { width: 50px; display: inline-block; margin: 0; margin-bottom: 0.2em; padding: 0; text-align: left; font-size: 0.8em; }
+p.category, p.category *    { color: #565656; }
+.humble-bundle              { background-color: #8594fd; }
+.amazon                     { background-color: #fbda61; }
+.netflix                    { background-color: #ec4851; }
+.extra                      { background-color: #98ce5d; }
+.np                         { background-image: url(http://i.imgur.com/SkX34G9.png); background-repeat: repeat; animation: np-anim 1s linear infinite; }
+div#legend span             { width: 1em; height: 1em; display: inline-block; }
+ul                          { padding-left: 2em; list-style-type: none; }
+div#footer p, div#footer ul { font-size: 0.8em; }
+
+@keyframes hover-category {
+    from    { border-radius: 0px; }
+    to      { border-radius: 10px; }
+}
+
+@keyframes np-anim {
+    from    { background-position:0 0; }
+    to      { background-position:0 12px; }
+}
+
+/* ID's on months created for readability. */
+ 
+</style>
+</head>
+<body>
+  <div id="loader"></div>
+  <h2>Expenses 2017</h2>
+  <div class="container">
+    <p class="category"><b>Isack expenses:</b> <span id="sum-i" class="sum"></span> Euros </p>
+    <div class="titles">
+      <p class="name-month">Jan.</p>
+      <p class="name-month">Feb.</p>
+      <p class="name-month">Mar.</p>
+      <p class="name-month">Apr.</p>
+      <p class="name-month">May</p>
+      <p class="name-month">June</p>
+      <p class="name-month">July</p>
+      <p class="name-month">Aug.</p>
+      <p class="name-month">Sep.</p>
+      <p class="name-month">Oct.</p>
+      <p class="name-month">Nov.</p>
+      <p class="name-month">Dec.</p>
+    </div>
+    <div class="month i" id="ijanuary">
+      <div class="humble-bundle" data-eur="0.97" title="0.97 - Best of 2016" data-url="https://www.humblebundle.com/downloads?key=cKxeewazvZepTemB"></div>
+      <div class="humble-bundle" data-eur="0.97" title="0.97 - John Wick" data-url="https://www.humblebundle.com/downloads?key=mS4rAXpfFhXw6EnM"></div>
+    </div>
+    <div class="month i" id="ifebruary">
+      <div class="netflix" data-eur="2.99" title="2.99 - February" data-url="https://www.netflix.com/invoice/print/137371397"></div>
+      <div class="extra" data-eur="2.78" title="2.78 - Yoshi" data-url="https://user.gearbest.com/m-users-a-order_detail-order_id-11690560.htm"></div>
+    </div>
+    <div class="month i" id="imarch">
+    </div>
+    <div class="month i" id="iapril">
+    </div>
+    <div class="month i" id="imay">
+    </div>
+    <div class="month i" id="ijune">
+    </div>
+    <div class="month i" id="ijuly">
+    </div>
+    <div class="month i" id="iaugust">
+    </div>
+    <div class="month i" id="iseptember">
+    </div>
+    <div class="month i" id="ioctober">
+    </div>
+    <div class="month i" id="inovember">
+    </div>
+    <div class="month i" id="idecember">
+    </div>
+  </div>
+
+  <div class="container">
+    <p class="category"><b>Extra expenses:</b> <span id="sum-e" class="sum"></span> Euros</p>
+    <div class="titles">
+      <p class="name-month">Jan.</p>
+      <p class="name-month">Feb.</p>
+      <p class="name-month">Mar.</p>
+      <p class="name-month">Apr.</p>
+      <p class="name-month">May</p>
+      <p class="name-month">June</p>
+      <p class="name-month">July</p>
+      <p class="name-month">Aug.</p>
+      <p class="name-month">Sep.</p>
+      <p class="name-month">Oct.</p>
+      <p class="name-month">Nov.</p>
+      <p class="name-month">Dec.</p>
+    </div>
+    <div class="month" id="january">
+      <div class="amazon" data-eur="20.94" title="20.94 - QUMOX Temporizador Obturador (Samuel)" data-url="https://www.amazon.es/gp/your-account/order-details?ie=UTF8&orderID=406-6049924-4069103&ref_=pe_386191_41384461_TE_on"></div>
+    </div>
+    <div class="month" id="february">
+      <div class="netflix" data-eur="6" title="6 - February (Nico)" data-url="https://www.netflix.com/invoice/print/137371397"></div>
+      <div class="netflix" data-eur="3" title="3 - February (Samuel)" data-url="https://www.netflix.com/invoice/print/137371397"></div>
+    </div>
+    <div class="month" id="march">
+    </div>
+    <div class="month" id="april">
+    </div>
+    <div class="month" id="may">
+    </div>
+    <div class="month" id="june">
+    </div>
+    <div class="month" id="july">
+    </div>
+    <div class="month" id="august">
+    </div>
+    <div class="month" id="september">
+    </div>
+    <div class="month" id="october">
+    </div>
+    <div class="month" id="november">
+    </div>
+    <div class="month" id="december">
+    </div>
+  </div>
+
+  <div class="container" id="legend">
+    <p class="category"><span class="humble-bundle"></span> Humble Bundle</p>
+    <p class="category"><span class="amazon"></span> Amazon</p>
+    <p class="category"><span class="netflix"></span> Netflix</p>
+    <p class="category"><span class="extra"></span> Extras</p>
+    <p class="category"><span class="np" style="background-color: #eaeaea;"></span> Not paid</p>
+    <p class="category" style="text-align: right;"><b>Total:</b> <span id="sum-total" class="sum"></p>
+    <div id="footer">
+      <p>Debts (2016):</p>
+      <ul>
+        <li>28.80 (Mouse Samuel)</li>
+        <li>33 (Blender Samuel)</li>
+      </ul>
+    </div>
+  </div>
+
+<script type="text/javascript">
+var isackExpenses = 0.00;
+var extraExpenses = 0.00;
+
+// Loader div
+$(document).ready(function() {
+  $("#loader").animate({
+    opacity: 0,
+    display: "none"
+  }, {
+    duration: 400,
+    complete: function() {
+      $(this).css("display","none");
+    },
+  });
+});
+
+$(".month div").each(function(){
+  // Add quantities
+  if ($(this).parent().hasClass("i")) {
+    isackExpenses += parseFloat($(this).attr('data-eur'));
+  } else {
+    extraExpenses += parseFloat($(this).attr('data-eur'));
+  }
+  // Animate growth
+  $(this).animate({
+    height: Math.round($(this).attr('data-eur'))*2
+  }, {
+    duration: 1200,
+    complete: function() {
+      // Animation complete
+    },
+  });
+  // Link elements
+  $(this).on('click', function(){
+    var url = $(this).attr('data-url');
+    window.open(url,'_blank');
+  });
+});
+$("#sum-i").text(isackExpenses);
+$("#sum-e").text(extraExpenses);
+$("#sum-total").text(isackExpenses+extraExpenses);
+
+// Counter effect
+$('.sum').each(function () {
+  $(this).prop('Counter',0.00).animate({
+      Counter: $(this).text()
+  }, {
+      duration: 1000,
+      easing: 'linear',
+      step: function (now) {
+        now = now.toString().match(/^-?\d+(?:\.\d{0,2})?/)[0];
+        $(this).text(now);
+      }
+  });
+});
+</script>
+</body>
+</html>
