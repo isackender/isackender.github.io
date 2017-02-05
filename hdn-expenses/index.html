@@ -9,21 +9,21 @@
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <style type="text/css">
 *                           { background-color: #eaeaea; color: #afafaf;  }
-body                        { width: 100%;}
+body                        { width: 100%; padding-top: 2em;}
 div#loader                  { width: 100vw; height: 100vh; position: absolute; top: 0px; }
-h2                          { text-align: center; font-weight: normal; color: #565656; margin-top: 2em; margin-bottom: 2em; }
+h2                          { text-align: center; font-weight: normal; color: #565656; margin-bottom: 2em; }
 div.separator               { height: 200px; }
-div.container               { width: 650px; height: 200px; margin-left: auto; margin-right: auto; }
+div.container               { width: 650px; min-height: 150px; margin-left: auto; margin-right: auto; }
 div.month                   { width: 50px; display: inline-block; position: relative; vertical-align: top; }
 div.month div               { width: 50px; display: block; bottom: 0px; border-bottom: 1px solid #eaeaea; }
 div.month div:hover         { background-image: url(http://i.imgur.com/5TMmkjS.png); background-repeat: repeat; cursor: pointer; }
 div.titles                  { margin: 0; margin-bottom: 0.2em; padding: 0;}
-p.name-month                { width: 50px; display: inline-block; margin: 0; margin-bottom: 0.2em; padding: 0; text-align: left; font-size: 0.8em; }
+p.name-month                { width: 50px; display: inline-block; margin: 0; margin-bottom: 0.2em; padding: 0; text-align: center; font-size: 0.8em; }
 p.category, p.category *    { color: #565656; }
-.humble-bundle              { background-color: #8594fd; }
-.amazon                     { background-color: #fbda61; }
-.netflix                    { background-color: #ec4851; }
-.extra                      { background-color: #98ce5d; }
+.humble-bundle              { background-color: #8594fd; } /* ED303C */
+.amazon                     { background-color: #fbda61; } /* FAD089 */
+.netflix                    { background-color: #ec4851; } /* FF9C5B */
+.extra                      { background-color: #98ce5d; } /* F5634A */
 .np                         { background-image: url(http://i.imgur.com/SkX34G9.png); background-repeat: repeat; animation: np-anim 1s linear infinite; }
 div#legend span             { width: 1em; height: 1em; display: inline-block; }
 ul                          { padding-left: 2em; list-style-type: none; }
@@ -69,6 +69,7 @@ div#footer p, div#footer ul { font-size: 0.8em; }
     <div class="month i" id="ifebruary">
       <div class="netflix" data-eur="2.99" title="2.99 - February" data-url="https://www.netflix.com/invoice/print/137371397"></div>
       <div class="extra" data-eur="2.78" title="2.78 - Yoshi" data-url="https://user.gearbest.com/m-users-a-order_detail-order_id-11690560.htm"></div>
+      <div class="amazon" data-eur="26.99" title="26.99 - Dados y Tower dice" data-url="https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-3245087-7297139"></div>
     </div>
     <div class="month i" id="imarch">
     </div>
@@ -163,7 +164,7 @@ $(document).ready(function() {
     opacity: 0,
     display: "none"
   }, {
-    duration: 400,
+    duration: 800,
     complete: function() {
       $(this).css("display","none");
     },
@@ -181,7 +182,7 @@ $(".month div").each(function(){
   $(this).animate({
     height: Math.round($(this).attr('data-eur'))*2
   }, {
-    duration: 1200,
+    duration: 1000,
     complete: function() {
       // Animation complete
     },
