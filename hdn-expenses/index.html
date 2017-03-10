@@ -124,6 +124,7 @@ div#footer p, div#footer ul { font-size: 0.8em; }
     <div class="month" id="march">
       <div class="netflix" data-eur="6" title="6 - March (Nico)" data-url="https://www.netflix.com/invoice/print/1995211931"></div>
       <div class="netflix" data-eur="3" title="3 - March (Samuel)" data-url="https://www.netflix.com/invoice/print/1995211931"></div>
+      <div class="amazon" data-eur="12.98" title="12.98 - Gafas (Samuel)" data-url="https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-9338507-6431511"></div>
     </div>
     <div class="month" id="april">
     </div>
@@ -194,7 +195,7 @@ $(".month div").each(function(){
       // Animation complete
     },
   });
-  // Link elements
+  // Hyperlink elements
   $(this).on('click', function(){
     var url = $(this).attr('data-url');
     window.open(url,'_blank');
