@@ -27,7 +27,7 @@ for (var i=0; i<arrPre.length-1; i++) {
 
 if (found) {
   var percentage = (tickets*100)/total_tickets;
-  alert(name+", with "+tickets+" tickets, your chance is... "+percentage+"%");  
+  alert(name+", with "+tickets+" tickets, your chance of winning is... "+percentage+"%");  
   console.log(arrName+' - '+tickets);
 } else {
   alert("Name not found");
