@@ -44,7 +44,7 @@ div#footer p, div#footer ul { font-size: 0.8em; }
 <script type="text/javascript">
 // Get JSON Object with data.
 var data=[];
-$.getJSON("data.json", function(result) {
+$.getJSON("https://isackender.github.io/hdn-expenses/data.json", function(result) {
   $.each(result, function(i,field){
     data.push(field);
   });
