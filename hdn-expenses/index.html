@@ -43,13 +43,7 @@ div#footer p, div#footer ul { font-size: 0.8em; }
 <body>
 <script type="text/javascript">
 // Get JSON Object with data.
-var data=[];
-$.getJSON("https://isackender.github.io/hdn-expenses/data.json", function(result) {
-  $.each(result, function(i,field){
-    data.push(field);
-  });
-  console.log("JSON Loaded");
-});
+
 </script>
   <div id="loader"></div>
   <h2>Expenses 2017</h2>
@@ -78,7 +72,10 @@ $.getJSON("https://isackender.github.io/hdn-expenses/data.json", function(result
   </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
+var data=[];
+
+function start(){
+  console.log("Started");
   // Loader div
   $("#loader").animate({
     opacity: 0,
@@ -173,6 +170,14 @@ $(document).ready(function() {
       window.open(url,'_blank');
     });
   });
+} // End function start
+
+$.getJSON("https://isackender.github.io/hdn-expenses/data.json", function(result) {
+  $.each(result, function(i,field){
+    data.push(field);
+  });
+  console.log("JSON Loaded");
+  start();
 });
 </script>
 </body>
