@@ -1,0 +1,299 @@
+[
+  {
+    "user":"Isack",
+    "expenses":[
+      {
+        "January":[
+          {
+            "classtype":"humble-bundle",
+            "dataeur":0.97,
+            "datatitle":"Best of 2016",
+            "dataurl":"https://www.humblebundle.com/downloads?key=cKxeewazvZepTemB",
+            "payed":true
+          },
+          {
+            "classtype":"humble-bundle",
+            "dataeur":0.97,
+            "datatitle":"John Wick",
+            "dataurl":"https://www.humblebundle.com/downloads?key=mS4rAXpfFhXw6EnM",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "February":[
+          {
+            "classtype":"netflix",
+            "dataeur":2.99,
+            "datatitle":"February",
+            "dataurl":"https://www.netflix.com/invoice/print/137371397",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":2.78,
+            "datatitle":"Yoshi",
+            "dataurl":"https://user.gearbest.com/m-users-a-order_detail-order_id-11690560.htm",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":26.99,
+            "datatitle":"Dices & Tower dice",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-3245087-7297139",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":4.99,
+            "datatitle":"Batman Arkham Knight (Bundle Stars)",
+            "dataurl":"https://www.bundlestars.com/en/orders/58a646cdf43bff0f000462c3",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":9.00,
+            "datatitle":"Smash Up",
+            "dataurl":"#",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "March":[
+          {
+            "classtype":"netflix",
+            "dataeur":2.99,
+            "datatitle":"March",
+            "dataurl":"https://www.netflix.com/invoice/print/1995211931",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":10.00,
+            "datatitle":"100pts PoE",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/0K1208929P026054N",
+            "payed":true
+          },
+          {
+            "classtype":"humble-bundle",
+            "dataeur":11.64,
+            "datatitle":"Humble Monthly",
+            "dataurl":"https://www.humblebundle.com/downloads?key=XKzVSfkyycs6SvuW",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":5,
+            "datatitle":"50pts PoE",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/70F424015G658411F",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "April":[
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"April",
+            "dataurl":"https://www.netflix.com/invoice/print/659533028",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":15.68,
+            "datatitle":"Walden (Libro)",
+            "dataurl":"https://www.amazon.es/Walden-Letras-Universales-Henry-Thoreau/dp/8437622123/",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "May":[
+
+        ]
+      },
+      {
+        "June":[
+
+        ]
+      },
+      {
+        "July":[
+
+        ]
+      },
+      {
+        "August":[
+
+        ]
+      },
+      {
+        "September":[
+
+        ]
+      },
+      {
+        "October":[
+
+        ]
+      },
+      {
+        "November":[
+
+        ]
+      },
+      {
+        "December":[
+
+        ]
+      }
+    ]
+  },
+  {
+    "user":"Extra",
+    "expenses":[
+      {
+        "January":[
+          {
+            "classtype":"amazon",
+            "dataeur":20.94,
+            "datatitle":"QUMOX Temporizador Obturador (Samuel)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details?ie=UTF8&orderID=406-6049924-4069103&ref_=pe_386191_41384461_TE_on",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "February":[
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"February (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/137371397",
+            "payed":true
+          },
+          {
+            "classtype":"netflix",
+            "dataeur":3,
+            "datatitle":"February (Samuel)",
+            "dataurl":"https://www.netflix.com/invoice/print/137371397",
+            "payed":true
+          },
+          {
+            "classtype":"humble-bundle",
+            "dataeur":11.64,
+            "datatitle":"Humble Monthly (Samuel)",
+            "dataurl":"https://www.humblebundle.com/downloads?key=dywkcxVSqUASFrav",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "March":[
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"March (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/1995211931",
+            "payed":true
+          },
+          {
+            "classtype":"netflix",
+            "dataeur":3,
+            "datatitle":"March (Samuel)",
+            "dataurl":"https://www.netflix.com/invoice/print/1995211931",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":12.98,
+            "datatitle":"Gafas (Samuel)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-9338507-6431511",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":9.75,
+            "datatitle":"100pts PoE (Samuel)",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/8M287237DE020845A",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":5,
+            "datatitle":"50pts PoE (Samuel)",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/9C872766H80436621",
+            "payed":true
+          }
+        ]
+      },
+      {
+        "April":[
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"April (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/659533028",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":15.47,
+            "datatitle":"Mono pintar",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-9308306-3551552",
+            "payed":false
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":13,
+            "datatitle":"Gafas Seguridad",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o01_?ie=UTF8&orderID=406-9077895-4398753",
+            "payed":false
+          }
+        ]
+      },
+      {
+        "May":[
+
+        ]
+      },
+      {
+        "June":[
+
+        ]
+      },
+      {
+        "July":[
+
+        ]
+      },
+      {
+        "August":[
+
+        ]
+      },
+      {
+        "September":[
+
+        ]
+      },
+      {
+        "October":[
+
+        ]
+      },
+      {
+        "November":[
+
+        ]
+      },
+      {
+        "December":[
+
+        ]
+      }
+    ]
+  }
+]
