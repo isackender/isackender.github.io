@@ -43,11 +43,7 @@ div#footer p, div#footer ul { font-size: 0.8em; }
 <body>
   <div id="loader"></div>
   <h2>Expenses 2017</h2>
-  <div class="container">
-
-  </div>
-
-  <div class="container">
+  <div id="boxes">
 
   </div>
 
@@ -90,6 +86,9 @@ function start(){
   var monthTitles;
   var boxstr;
   for (var x = 0; x < data.length; x++) {
+    var container = $("<div></div>");
+    container.addClass("container");
+
     catTitle[x] = "<p class=\"category\"><b>"+data[x].user+" expenses: ";
     sum[x] = 0.00;
     for (var i = 0; i < data[x].expenses.length; i++) {
@@ -100,7 +99,7 @@ function start(){
       });
     };
     catTitle[x]+="</b> <span class=\"counter\">"+sum[x]+"</span> Euros </p>";
-    $(".container:eq("+x+")").append(catTitle[x]);
+    container.append(catTitle[x]);
     total+=sum[x];
 
     // Month titles
@@ -111,7 +110,7 @@ function start(){
       });
     };
     monthTitles+="</div>";
-    $(".container:eq("+x+")").append(monthTitles);
+    container.append(monthTitles);
 
     // Expenses boxes
     for (var i = 0; i < data[x].expenses.length; i++) {
@@ -127,10 +126,10 @@ function start(){
           
         }
         boxstr+="</div>\n";
-        $(".container:eq("+x+")").append(boxstr); 
+        container.append(boxstr); 
       });
-      
     };
+    $("#boxes").append(container);
   };
 
   // Total
@@ -168,7 +167,7 @@ function start(){
   });
 } // End function start
 
-$.getJSON("https://isackender.github.io/hdn-expenses/data.json", function(result) {
+$.getJSON("data.json", function(result) {
   $.each(result, function(i,field){
     data.push(field);
   });
