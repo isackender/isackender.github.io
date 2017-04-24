@@ -243,14 +243,14 @@
             "dataeur":15.47,
             "datatitle":"Mono pintar",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-9308306-3551552",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"amazon",
             "dataeur":13,
             "datatitle":"Gafas Seguridad",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o01_?ie=UTF8&orderID=406-9077895-4398753",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"amazon",
