@@ -106,12 +106,39 @@
             "datatitle":"Walden (Libro) PAGAR A NICO",
             "dataurl":"https://www.amazon.es/Walden-Letras-Universales-Henry-Thoreau/dp/8437622123/",
             "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":9.03,
+            "datatitle":"Tabletop Simulator",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/7X771962WC270750Y",
+            "payed":true
           }
         ]
       },
       {
         "May":[
-
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"May",
+            "dataurl":"https://www.netflix.com/invoice/print/1037531449",
+            "payed":true
+          },
+          {
+            "classtype":"humble-bundle",
+            "dataeur":0.95,
+            "datatitle":"Very Positive Bundle",
+            "dataurl":"https://www.humblebundle.com/downloads?key=C4Kp4dbU7bvufwdF",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":21.86,
+            "datatitle":"Uzumaki HC (Cómic)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
+            "payed":true
+          }
         ]
       },
       {
@@ -263,7 +290,20 @@
       },
       {
         "May":[
-
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"May (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/1037531449",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":10.00,
+            "datatitle":"Auriculares MDRE9LPL (Mamá)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
+            "payed":false
+          }
         ]
       },
       {
