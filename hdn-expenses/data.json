@@ -138,6 +138,20 @@
             "datatitle":"Uzumaki HC (Cómic)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
             "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":3.00,
+            "datatitle":"Guardianes de la Galaxia Vol. 2",
+            "dataurl":"#",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":4.95,
+            "datatitle":"Alan Wake Franchise",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/7YH83630YM608594B",
+            "payed":true
           }
         ]
       },
@@ -302,6 +316,20 @@
             "dataeur":10.00,
             "datatitle":"Auriculares MDRE9LPL (Mamá)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
+            "payed":false
+          },
+          {
+            "classtype":"extra",
+            "dataeur":3.00,
+            "datatitle":"Guardianes de la Galaxia Vol. 2 (Nico)",
+            "dataurl":"#",
+            "payed":false
+          },
+          {
+            "classtype":"extra",
+            "dataeur":3.00,
+            "datatitle":"Guardianes de la Galaxia Vol. 2 (Samuel)",
+            "dataurl":"#",
             "payed":false
           }
         ]
