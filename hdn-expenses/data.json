@@ -152,6 +152,13 @@
             "datatitle":"Alan Wake Franchise",
             "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/7YH83630YM608594B",
             "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":6.30,
+            "datatitle":"Cumpleaños papá",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
+            "payed":true
           }
         ]
       },
@@ -323,13 +330,34 @@
             "dataeur":3.00,
             "datatitle":"Guardianes de la Galaxia Vol. 2 (Nico)",
             "dataurl":"#",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"extra",
             "dataeur":3.00,
             "datatitle":"Guardianes de la Galaxia Vol. 2 (Samuel)",
             "dataurl":"#",
+            "payed":false
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":15.23,
+            "datatitle":"Amazon (Milagros)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":6.30,
+            "datatitle":"Cumpleaños papá (Milagros)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
+            "payed":true
+          },
+          {
+            "classtype":"amazon",
+            "dataeur":6.30,
+            "datatitle":"Cumpleaños papá (Samuel)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
             "payed":false
           }
         ]
