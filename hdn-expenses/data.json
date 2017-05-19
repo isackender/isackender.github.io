@@ -335,9 +335,9 @@
           {
             "classtype":"amazon",
             "dataeur":10.00,
-            "datatitle":"Auriculares MDRE9LPL (Mamá) (SOLO DEBE 5)",
+            "datatitle":"Auriculares MDRE9LPL (Mamá)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"extra",
@@ -351,7 +351,7 @@
             "dataeur":3.00,
             "datatitle":"Guardianes de la Galaxia Vol. 2 (Samuel)",
             "dataurl":"#",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"amazon",
@@ -372,14 +372,14 @@
             "dataeur":6.30,
             "datatitle":"Cumpleaños papá (Samuel)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
-            "payed":false
+            "payed":true
           },
           {
             "classtype":"extra",
             "dataeur":6.53,
             "datatitle":"Tabletop Simulator (Samuel)",
             "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/84F9951457050624V",
-            "payed":false
+            "payed":true
           }
         ]
       },
