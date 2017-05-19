@@ -159,6 +159,20 @@
             "datatitle":"Cumpleaños papá",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
             "payed":true
+          },
+          {
+            "classtype":"humble-bundle",
+            "dataeur":1.00,
+            "datatitle":"Humble Indie Bundle 18",
+            "dataurl":"https://www.humblebundle.com/downloads?key=8GCnRFahKt8WbEmZ",
+            "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":4.95,
+            "datatitle":"Steam",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/661116480H447080L",
+            "payed":true
           }
         ]
       },
@@ -321,7 +335,7 @@
           {
             "classtype":"amazon",
             "dataeur":10.00,
-            "datatitle":"Auriculares MDRE9LPL (Mamá)",
+            "datatitle":"Auriculares MDRE9LPL (Mamá) (SOLO DEBE 5)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-5606775-4257112",
             "payed":false
           },
@@ -358,6 +372,13 @@
             "dataeur":6.30,
             "datatitle":"Cumpleaños papá (Samuel)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-7791649-2388339",
+            "payed":false
+          },
+          {
+            "classtype":"extra",
+            "dataeur":6.53,
+            "datatitle":"Tabletop Simulator (Samuel)",
+            "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/84F9951457050624V",
             "payed":false
           }
         ]
