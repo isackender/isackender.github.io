@@ -380,12 +380,25 @@
             "datatitle":"Tabletop Simulator (Samuel)",
             "dataurl":"https://www.paypal.com/myaccount/transaction/print-details/84F9951457050624V",
             "payed":true
+          },
+          {
+            "classtype":"extra",
+            "dataeur":11.83,
+            "datatitle":"Joystick Izq. Wii U (Papá)",
+            "dataurl":"http://www.tuconsola.com/printorder.php?order_id=7088",
+            "payed":false
           }
         ]
       },
       {
         "June":[
-
+          {
+            "classtype":"extra",
+            "dataeur":12.94,
+            "datatitle":"Set Destornilladores Wii U (Papá)",
+            "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-4163351-1744334",
+            "payed":false
+          }
         ]
       },
       {
