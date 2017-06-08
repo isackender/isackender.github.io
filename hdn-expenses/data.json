@@ -178,7 +178,13 @@
       },
       {
         "June":[
-
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"June",
+            "dataurl":"https://www.netflix.com/invoice/print/1637919621",
+            "payed":true
+          },
         ]
       },
       {
@@ -392,6 +398,13 @@
       },
       {
         "June":[
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"May (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/1637919621",
+            "payed":true
+          },
           {
             "classtype":"extra",
             "dataeur":12.94,
