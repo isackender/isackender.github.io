@@ -189,7 +189,13 @@
       },
       {
         "July":[
-
+          {
+            "classtype":"netflix",
+            "dataeur":3,
+            "datatitle":"July",
+            "dataurl":"https://www.netflix.com/invoice/print/69375312",
+            "payed":true
+          }
         ]
       },
       {
@@ -392,7 +398,7 @@
             "dataeur":11.83,
             "datatitle":"Joystick Izq. Wii U (Papá)",
             "dataurl":"http://www.tuconsola.com/printorder.php?order_id=7088",
-            "payed":false
+            "payed":true
           }
         ]
       },
@@ -410,13 +416,26 @@
             "dataeur":12.94,
             "datatitle":"Set Destornilladores Wii U (Papá)",
             "dataurl":"https://www.amazon.es/gp/your-account/order-details/ref=oh_aui_or_o00_?ie=UTF8&orderID=406-4163351-1744334",
-            "payed":false
+            "payed":true
           }
         ]
       },
       {
         "July":[
-
+          {
+            "classtype":"netflix",
+            "dataeur":6,
+            "datatitle":"July (Nico)",
+            "dataurl":"https://www.netflix.com/invoice/print/69375312",
+            "payed":true
+          },
+          {
+            "classtype":"netflix",
+            "dataeur":3,
+            "datatitle":"July (Samuel)",
+            "dataurl":"https://www.netflix.com/invoice/print/69375312",
+            "payed":true
+          }
         ]
       },
       {
