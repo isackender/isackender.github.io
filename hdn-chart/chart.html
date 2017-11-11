@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  canvas:hover {              cursor: url(cursor.cur), default; }
+  </style>
+  <script type="text/javascript">
+  var dat = new Array();
+  dat[0] = [690,706,718,702,681];
+  dat[1] = [743,677,684,665,677];
+  dat[2] = [714,722,739,697,702];
+  dat[3] = [741,724,683,724,712];
+  dat[4] = [725,699,704,716,732];
+  dat[5] = [703,689,661,743,706];
+  dat[6] = [705,675,671,708,701];
+  dat[7] = [685,669,696,665,692];
+  dat[8] = [633,731,747,711,715];
+  dat[9] = [666,713,702,674,687];
+  // DecM, UdsM, Cent, Dec, Uds
+  </script>
+</head>
+<body>
+
+<canvas id="graph" width="850" height="500" style="border:1px solid #131313;">Your browser does not support the HTML5 canvas tag.</canvas>
+
+<pre id="outp"></pre>
+
+</body>
+<script type="text/javascript">
+var pr = document.getElementById("outp");
+var c = document.getElementById("graph");
+var ctx = c.getContext("2d");
+
+var xorig=50;
+var yorig=50;
+var space=175;
+var guidelength=5;
+var fontsz=15;
+var mg = Math.round(fontsz/2)-3;
+
+function legend(){
+  ctx.fillStyle = "black";
+  ctx.fillRect(0, 0, c.width, c.height);
+
+  ctx.fillStyle = "white";
+  ctx.font = fontsz+"px din light";
+  ctx.fillText("800",10,yorig+mg);
+  ctx.fillText("750",10,yorig*3+mg);
+  ctx.fillText("700",10,yorig*5+mg);
+  ctx.fillText("650",10,yorig*7+mg);
+  ctx.fillText("600",10,yorig*9+mg);
+
+  ctx.fillText("X · · · ·",xorig,yorig*9.5);
+  ctx.fillText("· X · · ·",xorig+space,yorig*9.5);
+  ctx.fillText("· · X · ·",xorig+space*2,yorig*9.5);
+  ctx.fillText("· · · X ·",xorig+space*3,yorig*9.5);
+  ctx.fillText("· · · · X",xorig+space*4,yorig*9.5);
+
+  ctx.beginPath();
+  ctx.lineWidth=2;
+  ctx.strokeStyle="#FFFFFF";
+  ctx.moveTo(xorig, yorig);
+  ctx.lineTo(xorig, yorig*9);    // Y
+  ctx.lineTo(xorig*16, yorig*9);   // X
+
+  ctx.moveTo(xorig, yorig);
+  ctx.lineTo(xorig-guidelength, yorig);
+  ctx.moveTo(xorig, yorig*3);
+  ctx.lineTo(xorig-guidelength, yorig*3);
+  ctx.moveTo(xorig, yorig*5);
+  ctx.lineTo(xorig-guidelength, yorig*5);
+  ctx.moveTo(xorig, yorig*7);
+  ctx.lineTo(xorig-guidelength, yorig*7);
+  ctx.moveTo(xorig, yorig*9);
+  ctx.lineTo(xorig-guidelength, yorig*9);
+
+  for (var y = yorig; y < yorig*9; y=y+20) {
+    ctx.moveTo(xorig-guidelength, y);
+    ctx.lineTo(xorig-guidelength+1, y);
+  }
+
+  ctx.moveTo(xorig, yorig*9);
+  ctx.lineTo(xorig, yorig*9+guidelength);
+  ctx.moveTo(xorig+space, yorig*9);
+  ctx.lineTo(xorig+space, yorig*9+guidelength);
+  ctx.moveTo(xorig+space*2, yorig*9);
+  ctx.lineTo(xorig+space*2, yorig*9+guidelength);
+  ctx.moveTo(xorig+space*3, yorig*9);
+  ctx.lineTo(xorig+space*3, yorig*9+guidelength);
+  ctx.moveTo(xorig+space*4, yorig*9);
+  ctx.lineTo(xorig+space*4, yorig*9+guidelength);
+
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function draw(){
+  for (var i = 0; i < dat.length; i++) {
+    ctx.beginPath();
+    ctx.strokeStyle="black";
+    for (var j = 0; j < dat[i].length; j++) {
+      var ind=space*j;
+      var coory = yorig*9-(dat[i][j]*2-1200);
+      ctx.lineTo(xorig+ind, coory);
+      ctx.strokeStyle="#cccccc";
+    }
+    ctx.stroke();
+    ctx.closePath();
+  }
+}
+
+function writeMessage(message, xpos, ypos) {
+  ctx.clearRect(0, 0, c.width, c.height);
+  legend();
+  draw();
+  ctx.fillStyle = "red";
+  ctx.font = fontsz+"px din light";
+  ctx.fillText(message,xpos-10,ypos-10);
+}
+
+function clearCursor(){
+  ctx.clearRect(0, 0, c.width, c.height);
+  legend();
+  draw();
+}
+
+function getMousePos(canvas, evt) {
+  var rect = canvas.getBoundingClientRect();
+  return {
+    x: evt.clientX - rect.left,
+    y: evt.clientY - rect.top
+  };
+}
+
+c.addEventListener('mousemove', function(evt) {
+  var mousePos = getMousePos(c, evt);
+  var message = x = Math.floor((450-mousePos.y)/2)+600;
+  var fr = 50;
+  if (mousePos.x <= c.width-fr && mousePos.x >= fr) {
+    if (mousePos.y <= c.height-fr && mousePos.y >= fr) {
+      writeMessage(message,mousePos.x,mousePos.y);
+    } else {
+      clearCursor();
+    }
+  } else {
+    clearCursor();
+  }
+}, false);
+
+c.addEventListener('mouseout', function(evt) {
+  clearCursor();
+}, false);
+
+legend();
+draw();
+</script>
+</html>
