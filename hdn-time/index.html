@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+  /* http://meyerweb.com/eric/tools/css/reset/
+     v2.0 | 20110126
+     License: none (public domain)
+  */
+
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+  	margin: 0;
+  	padding: 0;
+  	border: 0;
+  	font-size: 100%;
+  	font: inherit;
+  	vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+  	display: block;
+  }
+  body {
+  	line-height: 1;
+  }
+  ol, ul {
+  	list-style: none;
+  }
+  blockquote, q {
+  	quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+  	content: '';
+  	content: none;
+  }
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  }
+  </style>
+  <link href="https://fonts.googleapis.com/css?family=Lato:900" rel="stylesheet">
+  <style media="screen">
+html, body {
+  height: 100%;
+  overflow-y: hidden;
+  background-color: #fafafa;
+  color: #131313;
+}
+#timer{
+  text-align: center;
+  font-family: 'Lato', sans-serif;
+  font-size: 4em;
+}
+#circle{
+  position: fixed;
+  height: 400px;
+  width: 400px;
+  border: 1px solid #fafafa;
+  border-top: 1px solid #afafaf;
+  border-radius: 50%;
+}
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</head>
+<body>
+<div style="display:flex;justify-content:center;align-items:center;height:100%;">
+  <span id="circle"></span>
+  <p id="timer"></p>
+</div>
+
+<script>
+var finalDate = new Date(2018, 7, 24, 20, 25, 0, 0).getTime();
+
+timer();
+
+var x = setInterval(timer, 1000);
+
+function timer() {
+  var now = new Date().getTime();
+  var remaining = finalDate - now;
+
+  var hours = Math.floor(remaining / (1000 * 60 * 60));
+  var minutes = Math.floor((remaining % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((remaining % (1000 * 60)) / 1000);
+
+  // Display the result in the element with id="demo"
+  document.getElementById("timer").innerHTML = hours + "h " + minutes + "m " + seconds + "s ";
+  AnimateRotate(360);
+
+  if (remaining < 0) {
+    clearInterval(x);
+    document.getElementById("timer").innerHTML = "Black Holes";
+  }
+}
+
+function AnimateRotate(angle) {
+    // caching the object for performance reasons
+    var $elem = $('#circle');
+
+    // we use a pseudo object for the animation
+    // (starts from `0` to `angle`), you can name it as you want
+    $({deg: 0}).animate({deg: angle}, {
+        duration: 1000,
+        easing: "swing",
+        step: function(now) {
+            // in the step-callback (that is fired each step of the animation),
+            // you can use the `now` paramter which contains the current
+            // animation-position (`0` up to `angle`)
+            $elem.css({
+                transform: 'rotate(' + now + 'deg)'
+            });
+        }
+    });
+}
+</script>
+
+</body>
+</html>
