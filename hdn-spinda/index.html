@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
+<style>
+div#container{
+    margin: 0 auto;
+    max-width: 300px;
+    font-family: 'Archivo Narrow', sans-serif;
+}
+div.color-field {
+    display: inline-block;
+    float: left;
+}
+div.color-btn {
+    display: inline-block;
+    margin-left: 12px;
+}
+button {
+    height: 3em;
+}
+</style>
+</head>
+<body>
+    <div id="container">
+        <canvas id="canvas" width="300" height="300"></canvas>
+        <div class="color-field">
+            <label for="spindabg">Skin color</label>
+            <input class="jscolor" type="text" name="spindabg" id="spindabg" value="#ddc8a8"><!-- Default #ddc8a8 -->
+        </div>
+        <div class="color-field">
+            <label for="spindadt">Dots color</label>
+            <input class="jscolor" type="text" name="spindadt" id="spindadt" value="#d1574c"><!-- Default   #d1574c -->
+        </div>
+        <div class="color-btn">
+            <button type="button" name="spinda" id="spindabtn">Spinda!</button>
+        </div>
+    </div>
+
+
+    <script src="main.js" charset="utf-8"></script>
+    <script src="jscolor.js"></script>
+</body>
+</html>
