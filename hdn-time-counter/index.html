@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TIME IS RUNNING OUT</title>
+    <!-- jQuery 3.3.1 -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- Normalize.css 8.0.1 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <div id="container">
+        <div id="mondayclock" class="clock ui-widget-content">
+            <div class="clocktitle">
+                <p>UNTIL<br>MONDAY</p>
+            </div>
+            <div class="clocknumbers">
+            </div>
+        </div>
+
+        <div id="fridayclock" class="clock ui-widget-content">
+            <div class="clocktitle">
+                <p>UNTIL<br>FRIDAY</p>
+            </div>
+            <div class="clocknumbers">
+            </div>
+        </div>
+
+        <div id="kioskoclock" class="clock ui-widget-content">
+            <div class="clocktitle">
+                <p>UNTIL<br>KIOSKO</p>
+            </div>
+            <div class="clocknumbers">
+            </div>
+        </div>
+    </div>
+
+<script src="scripts/main.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(".clock").each(function(){
+        $(this).draggable({
+            containment: "parent",
+            snap: true
+        })
+    });
+    $("#mondayclock, #fridayclock").css({
+        cursor: "grab"
+    });
+</script>
+</body>
+</html>
