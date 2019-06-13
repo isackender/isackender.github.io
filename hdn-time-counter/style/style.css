@@ -1,0 +1,45 @@
+html, body, #container {
+    height: 100%;
+}
+div.clock {
+    max-width: 9em;
+    font-family: 'Roboto', sans-serif;
+    min-height: 105px;
+    background: repeating-linear-gradient(
+      45deg,
+      #efefef,
+      #efefef 10px,
+      #e8e8e8 10px,
+      #e8e8e8 20px
+    );
+    border: 1px solid #efefef;
+    padding: 5px
+}
+.clock .clocktitle {
+    float: left;
+}
+
+.clocktitle p {
+    margin: 0;
+}
+
+.clock .clocknumbers {
+    max-width: 3.5em;
+    float: right;
+}
+
+.numbertime {
+    font-size: 1.4em;
+    float: left;
+    margin-right: 5px;
+}
+
+.verbosetime {
+    font-size: 0.8em;
+    float: right;
+    margin-top: 0.7em;
+}
+
+.separator{
+    clear: both;
+}
