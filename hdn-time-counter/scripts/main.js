@@ -49,10 +49,10 @@ $(document).ready(function(){
         var k = today.getDate();
         k++;
         nextKiosko.setDate(k);
-        nextKiosko.getHours(12);
+    }
+        nextKiosko.setHours(12);
         nextKiosko.setMinutes(0);
         nextKiosko.setSeconds(0);
-    }
 
 
     var mondayStr = showClock(getRemainingTime(nextMonday));
