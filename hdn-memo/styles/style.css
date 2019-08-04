@@ -1,0 +1,97 @@
+html, body {
+    background-color: #F7CAC9;
+    color: #FFFFFF;
+}
+
+.app-header {
+    text-align: center;
+}
+
+.app-body {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+.app-footer {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    text-align: center;
+}
+
+.aesthetic {
+    font-family: 'Arial';
+    font-style: italic;
+}
+
+.header {
+    font-size: 3em;
+    text-shadow: 3px 3px #000000;
+}
+
+input.cell {
+    font-family: 'Arial';
+    color: #000000;
+    display: inline-block;
+    max-width: 100px;
+    min-height: 2em;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 0.5em;
+    border: 0;
+    border-bottom: 2px solid #FFFFFF;
+}
+
+input.cell-name {
+    /* background-color: #E8D7FF; */
+    background-color: #F8F1FF;
+    padding-left: 5px;
+    font-weight: bold;
+}
+
+input.cell-data {
+    /* background-color: #F3FFE1; */
+    background-color: #F7CAC9;
+    min-width: 220px;
+    margin-left: 5px;
+    padding-left: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+input.cell-price {
+    /* background-color: #F3FFE1; */
+    background-color: #F7CAC9;
+    min-width: 50px;
+    margin-left: 5px;
+    padding-left: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+button {
+    display: inline-block;
+    min-height: 3em;
+    padding: 0px;
+    margin: 0px;
+    background-color: #F7CAC9;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-shadow: 1px 1px #000000;
+    border: 2px solid #FFFFFF;
+    box-shadow: 2px 2px #000000;
+}
+
+button:active {
+  box-shadow: 0px 0px #000000;
+}
+
+button:active {
+  border: 0px;
+}
+
+.test {
+    background-color: #CCCCCC;
+    width: 100%;
+    min-height: 5px;
+}
