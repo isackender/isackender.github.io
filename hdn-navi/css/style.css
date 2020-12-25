@@ -2,26 +2,26 @@
 	--sp-black: #010101;
 	--sp-purple: #33172b;
 	--sp-white: #fafafa;
-  --sp-green: #44c693;
-  --sp-pink: #ef54a1;
+	--sp-green: #44c693;
+	--sp-pink: #ef54a1;
 }
 
 html, body, canvas {
 	min-width: 100%;
-  min-height: 100%;
-  overflow: hidden;
+	min-height: 100%;
+	overflow: hidden;
 	color: var(--sp-white);
 }
 
 body {
 	background-image: url("../media/loop.gif");
 	background-repeat: no-repeat;
-  background-size: cover;
+	background-size: cover;
 }
 
 .container {
 	height: 100vh;
-  position: relative;
+	position: relative;
 	font-family: 'Nunito Sans', sans-serif;
 	box-shadow: 20px 20px black;
 }
@@ -31,11 +31,11 @@ body {
 	width: 1450px;
 	height: 850px;
 	margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
 	box-shadow: 0px 0px 20px var(--sp-purple);
 }
 
@@ -68,7 +68,7 @@ body {
 .logo.logo-animate {
 	top: 0px;
 	left: 0px;
-  transform: translate(146%,-15%) scale(0.4);
+	transform: translate(146%,-15%) scale(0.4);
 }
 
 .logo-line {
@@ -125,7 +125,7 @@ body {
 
 .page {
 	position: absolute;
-  padding: 40px;
+  	padding: 40px;
 	font-size: 24px;
 	z-index: 10;
 	display: none;
@@ -155,14 +155,14 @@ body {
 
 p.line-package {
 	font-weight: 700;
-  font-size: 64px;
-  text-align: center;
+	font-size: 64px;
+	text-align: center;
 }
 
 p.line-package-number {
 	font-weight: 900;
-  font-size: 139px;
-  text-align: center;
+	font-size: 139px;
+	text-align: center;
 }
 
 .handwritten {
