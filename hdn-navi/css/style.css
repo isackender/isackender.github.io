@@ -1,0 +1,182 @@
+:root {
+	--sp-black: #010101;
+	--sp-purple: #33172b;
+	--sp-white: #fafafa;
+  --sp-green: #44c693;
+  --sp-pink: #ef54a1;
+}
+
+html, body, canvas {
+	min-width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+	color: var(--sp-white);
+}
+
+body {
+	background-image: url("../media/loop.gif");
+	background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container {
+	height: 100vh;
+  position: relative;
+	font-family: 'Nunito Sans', sans-serif;
+	box-shadow: 20px 20px black;
+}
+
+.content {
+	background-image: url("../media/space.jpg");
+	width: 1450px;
+	height: 850px;
+	margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+	box-shadow: 0px 0px 20px var(--sp-purple);
+}
+
+.center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.cover {
+	background-color: black;
+	height: 100%;
+	opacity: 50%;
+	display: none;
+}
+
+.clickable {
+	cursor: pointer;
+}
+
+.logo {
+	width: 650px;
+	z-index: 1;
+	transition: all 0.8s;
+}
+
+.logo.logo-animate {
+	top: 0px;
+	left: 0px;
+  transform: translate(146%,-15%) scale(0.4);
+}
+
+.logo-line {
+	display: block;
+}
+
+.logo-line.line-1 {
+	font-weight: 900;
+	font-size: 64px;
+	text-align: center;
+	letter-spacing: 64px;
+}
+
+.logo-line.line-2 {
+	font-weight: 900;
+	font-size: 139px;
+	text-align: center;
+	margin-left: -9px;
+	margin-top: 24px;
+	text-shadow: -6px 6px 1px var(--sp-pink), -12px 12px 1px var(--sp-green);
+}
+
+.logo-line.line-3 {
+	font-weight: 900;
+	font-size: 32px;
+	text-align: center;
+	letter-spacing: 189px;
+	margin-top: 24px;
+}
+
+.button {
+	text-align: center;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.button span {
+	padding: 12px;
+	background-color: var(--sp-white);
+	color: var(--sp-black);
+	box-shadow: -6px 6px 1px var(--sp-pink), -12px 12px 1px var(--sp-green);
+	transition: all 100ms;
+}
+
+.button span:active {
+	box-shadow: 0px 0px 1px var(--sp-pink), -0px 0px 1px var(--sp-green);
+}
+
+.page {
+	position: absolute;
+  padding: 40px;
+	font-size: 24px;
+	z-index: 10;
+	display: none;
+}
+
+.page p {
+	margin: 0;
+	padding: 0;
+	font-weight: 200;
+	font-size: 24px;
+	margin-bottom: 38px;
+}
+
+.bold {
+	font-weight: 700;
+}
+
+.page p.page-title {
+	font-weight: 900;
+	font-size: 40px;
+	margin-bottom: 20px;
+}
+
+.separator {
+	height: 125px;
+}
+
+p.line-package {
+	font-weight: 700;
+  font-size: 64px;
+  text-align: center;
+}
+
+p.line-package-number {
+	font-weight: 900;
+  font-size: 139px;
+  text-align: center;
+}
+
+.handwritten {
+	font-family: 'Indie Flower', cursive;
+}
+
+.button span.custom {
+	padding: 12px;
+	background-color: var(--sp-black);
+	color: var(--sp-white);
+	box-shadow: -6px 6px 1px var(--sp-pink), -12px 12px 1px var(--sp-green);
+	transition: all 100ms;
+}
+
+.button span.custom:active {
+	box-shadow: 0px 0px 1px var(--sp-pink), -0px 0px 1px var(--sp-green);
+}
