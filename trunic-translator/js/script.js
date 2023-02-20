@@ -19,12 +19,12 @@ const CONSONANTS = {
         description: 'F (f) (as in Fox)',
         phonema: 'f'
     },
-    'CTRCBRCBB' : {
+    'CTRCBBCBR' : {
         sound: 'G',
         description: 'G (g) (as in Gun)',
         phonema: 'g'
     },
-    'CTTCBRCBB' : {
+    'CTTCBBCBR' : {
         sound: 'H',
         description: 'H (h) (as in Hop)',
         phonema: 'h'
@@ -74,7 +74,7 @@ const CONSONANTS = {
         description: 'S (s) (as in Sit)',
         phonema: 's'
     },
-    'CTLCTRCBLCBRCBB' : {
+    'CTLCTRCBLCBBCBR' : {
         sound: 'SH',
         description: 'SH (ʃ) (as in Shut)',
         phonema: 'ʃ'
