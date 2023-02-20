@@ -1,0 +1,242 @@
+:root {
+    --line-opacity:0.02;
+    --line-girth: 12px;
+    --line-length: 60px;
+    --inver-top: 150px;
+    --inver-left: 35px;
+    --long-line-length: 96px;
+    --long-line-top: 82px;
+    --long-line-left: -40px;
+    --line-diagonal-left-a: 0px;
+    --line-diagonal-left-b: 42px;
+    --vowel-diagonal-top: 27px;
+    --vowel-diagonal-bottom: 137px;
+    --conso-diagonal-top: 52px;
+    --conso-diagonal-bottom: 112px;
+    --conso-straight-top: 40px;
+    --conso-straight-bottom: 124px;
+    --conso-straight-left: 21px;
+    --strike-top: 83px;
+    --strike-length: 96px;
+    --strike-height: 12px;
+    --word-margin-left: 60px;
+    --rune-color: #000000;
+}
+
+/* UI */
+#ui-container {
+    background-color: rgb(255, 255, 255, 0.8);
+    width: 100%;
+    z-index: 1000;
+    position: fixed;
+    padding: 12px;
+}
+
+.button {
+    border: none;
+    background-color: #cccccc;
+    border-radius: 3px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1em;
+}
+.button:hover {
+    background-color: #adadad;
+    cursor: pointer;
+}
+
+
+.sentence {
+    display: block;
+    margin-top: 12px;
+}
+
+.glyph-translation {
+    position: relative;
+    top: 188px;
+    font-family: 'Arial';
+}
+.glyph-translation > p.sound {
+    position: absolute;
+    font-family: 'Arial';
+    font-weight: bold;
+    font-size: 1em;
+    text-decoration: none;
+    max-width: 90px;
+    width: 90px;
+}
+.glyph-translation > p.description {
+    position: absolute;
+    top: 2em;
+    font-size: 0.6em;
+    max-width: 88px;
+    width: 88px;
+}
+.glyph-translation > p.phonema {
+    display: none;
+}
+
+/* Trunic */
+#container {
+    position: absolute;
+    margin-top: 120px;
+}
+
+.word:first-child {
+    margin-left: -60px;
+}
+
+.word {
+    display: inline-block;
+    margin-left: var(--word-margin-left);
+    overflow: visible;
+    height: 230px;
+}
+
+.glyph {
+    position: relative;
+    display: inline-block;
+    margin-left: 81px;
+}
+
+.line {
+    background-color: var(--rune-color);
+    min-height: var(--line-girth);
+    min-width: var(--line-girth);
+    max-height: var(--line-girth);
+    border-radius: 6px;
+    opacity: var(--line-opacity);
+}
+
+.inver {
+    position: absolute;
+    border: var(--line-girth) solid var(--rune-color);
+    border-radius: 50px;
+    min-height: 8px;
+    min-width: 8px;
+    top: var(--inver-top);
+    left: var(--inver-left);
+    opacity: var(--line-opacity);
+}
+
+/* Strike */
+.strike {
+    position: absolute;
+    background-color: var(--rune-color);
+    border-radius: 6px;
+    top: var(--strike-top);
+    left: 2px;
+    width: var(--strike-length);
+    height: var(--strike-height);
+    opacity: var(--line-opacity);
+}
+
+/* Vowels */
+.vowel.l-1 {
+    position: absolute;
+    top: var(--vowel-diagonal-top);
+    left: var(--line-diagonal-left-a);
+    width: var(--line-length);
+    transform: rotate(-30deg);
+}
+.vowel.l-2 {
+    position: absolute;
+    top: var(--vowel-diagonal-top);
+    left: var(--line-diagonal-left-b);
+    width: var(--line-length);
+    transform: rotate(30deg);
+}
+.vowel.l-3 {
+    position: absolute;
+    top: var(--long-line-top);
+    left: var(--long-line-left);
+    width: var(--long-line-length);
+    transform: rotate(90deg);
+}
+.vowel.l-4 {
+    position: absolute;
+    top: var(--vowel-diagonal-bottom);
+    left: var(--line-diagonal-left-a);
+    width: var(--line-length);
+    transform: rotate(30deg);
+}
+.vowel.l-5 {
+    position: absolute;
+    top: var(--vowel-diagonal-bottom);
+    left: var(--line-diagonal-left-b);
+    width: var(--line-length);
+    transform: rotate(-30deg);
+}
+
+/* Consonants */
+.conso.l-1 {
+    position: absolute;
+    top: var(--conso-diagonal-top);
+    left: var(--line-diagonal-left-left);
+    width: var(--line-length);
+    transform: rotate(30deg);
+}
+.conso.l-2 {
+    position: absolute;
+    top: var(--conso-straight-top);
+    left: var(--conso-straight-left);
+    width: var(--line-length);
+    transform: rotate(90deg);
+}
+.conso.l-3 {
+    position: absolute;
+    top: var(--conso-diagonal-top);
+    left: var(--line-diagonal-left-b);
+    width: var(--line-length);
+    transform: rotate(-30deg);
+}
+.conso.l-4 {
+    position: absolute;
+    top: var(--conso-diagonal-bottom);
+    left: var(--line-diagonal-left-a);
+    width: var(--line-length);
+    transform: rotate(-30deg);
+}
+.conso.l-5 {
+    position: absolute;
+    top: var(--conso-straight-bottom);
+    left: var(--conso-straight-left);
+    width: var(--line-length);
+    transform: rotate(90deg);
+}
+.conso.l-6 {
+    position: absolute;
+    top: var(--conso-diagonal-bottom);
+    left: var(--line-diagonal-left-b);
+    width: var(--line-length);
+    transform: rotate(30deg);
+}
+
+.joint {
+    background-color: var(--rune-color);
+    position: absolute;
+    top: 74px;
+    left: 36px;
+    width: 30px;
+    transform: rotate(90deg);
+    min-height: 12px;
+    min-width: 12px;
+    max-height: 12px;
+    border-radius: 6px;
+    opacity: 0;
+}
+
+
+
+/* Behavior */
+.active {
+    opacity: 1 !important;
+}
+
+.line:hover, .inver:hover {
+    cursor: pointer;
+    opacity: 0.3;
+}

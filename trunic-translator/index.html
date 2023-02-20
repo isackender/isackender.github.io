@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trunic Translator</title>
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/style.css">
+    <script src="js/jquery-3.6.3.slim.min.js"></script>
+    <script src="js/script.js"></script>
+</head>
+<body>
+    <div id="ui-container">
+        <button class="add-word button">Add word</button>
+        <button class="add-glyph button">Add glyph</button>
+        <button class="delete button">&lt;&lt;</button>
+        <p class="sentence"></p>
+    </div>
+    <div id="container">
+        <div class="word">
+            <div class="glyph">
+                <span class="line vowel l-1"></span>
+                <span class="line vowel l-2"></span>
+                <span class="line vowel l-3"></span>
+                <span class="line vowel l-4"></span>
+                <span class="line vowel l-5"></span>
+                <span class="joint"></span>
+                <span class="line conso l-1"></span>
+                <span class="line conso l-2"></span>
+                <span class="line conso l-3"></span>
+                <span class="line conso l-4"></span>
+                <span class="line conso l-5"></span>
+                <span class="line conso l-6"></span>
+                <span class="inver"></span>
+                <span class="strike"></span>
+                <div class="glyph-translation">
+                    <p class="sound"></p>
+                    <p class="description"></p>
+                    <p class="phonema"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
