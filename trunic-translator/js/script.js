@@ -121,7 +121,7 @@ const CONSONANTS = {
     }
 };
 const VOWELS = {
-    'VLVTLVTR' : {
+    'VTLVTRVL' : {
         sound: 'A',
         description: 'A (æ) (as in Glass)',
         phonema: 'æ'
