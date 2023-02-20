@@ -1,214 +1,214 @@
 const CONSONANTS = {
     'CTTCBR' : {
         sound: 'B',
-        description: 'B (b) (as in Baby)',
+        description: '[b] (as in Baby)',
         phonema: 'b'
     },
     'CTLCBB' : {
         sound: 'CH',
-        description: 'CH (tʃ) (as in Chat)',
+        description: '[tʃ] (as in Chat)',
         phonema: 'tʃ'
     },
     'CTTCBLCBR' : {
         sound: 'D',
-        description: 'D (d) (as in Dog)',
+        description: '[d] (as in Dog)',
         phonema: 'd'
     },
     'CTRCBLCBB' : {
         sound: 'F',
-        description: 'F (f) (as in Fox)',
+        description: '[f] (as in Fox)',
         phonema: 'f'
     },
     'CTRCBBCBR' : {
         sound: 'G',
-        description: 'G (g) (as in Gun)',
+        description: '[g] (as in Gun)',
         phonema: 'g'
     },
     'CTTCBBCBR' : {
         sound: 'H',
-        description: 'H (h) (as in Hop)',
+        description: '[h] (as in Hop)',
         phonema: 'h'
     },
     'CTTCBL' : {
         sound: 'J',
-        description: 'J (dʒ) (as in Jam)',
+        description: '[dʒ] (as in Jam)',
         phonema: 'dʒ'
     },
     'CTTCTRCBR' : {
         sound: 'K',
-        description: 'K (k) (as in Kart)',
+        description: '[k] (as in Kart)',
         phonema: 'k'
     },
     'CTTCBB' : {
         sound: 'L',
-        description: 'L (l) (as in Live)',
+        description: '[l] (as in Live)',
         phonema: 'l'
     },
     'CBLCBR' : {
         sound: 'M',
-        description: 'M (m) (as in Man)',
+        description: '[m] (as in Man)',
         phonema: 'm'
     },
     'CTLCBLCBR' : {
         sound: 'N',
-        description: 'N (n) (as in Net)',
+        description: '[n] (as in Net)',
         phonema: 'n'
     },
     'CTLCTTCTRCBLCBBCBR' : {
         sound: 'NG',
-        description: 'NG (ŋ) (as in Ring)',
+        description: '[ŋ] (as in Ring)',
         phonema: 'ŋ'
     },
     'CTRCBB' : {
         sound: 'P',
-        description: 'P (p) (as in Poppy)',
+        description: '[p] (as in Poppy)',
         phonema: 'p'
     },
     'CTTCTRCBB' : {
         sound: 'R',
-        description: 'R (r) (as in Run)',
+        description: '[r] (as in Run)',
         phonema: 'r'
     },
     'CTTCTRCBLCBB' : {
         sound: 'S',
-        description: 'S (s) (as in Sit)',
+        description: '[s] (as in Sit)',
         phonema: 's'
     },
     'CTLCTRCBLCBBCBR' : {
         sound: 'SH',
-        description: 'SH (ʃ) (as in Shut)',
+        description: '[ʃ] (as in Shut)',
         phonema: 'ʃ'
     },
     'CTLCTRCBB' : {
         sound: 'T',
-        description: 'T (t) (as in Tunic)',
+        description: '[t] (as in Tunic)',
         phonema: 't'
     },
     'CTLCTTCTRCBB' : {
         sound: 'TH',
-        description: 'TH (θ) (as in Thick)',
+        description: '[θ] (as in Thick)',
         phonema: 'θ'
     },
     'CTTCBLCBBCBR' : {
         sound: 'TH',
-        description: 'TH (ð) (as in This)',
+        description: '[ð] (as in This)',
         phonema: 'ð'
     },
     'CTLCTTCBR' : {
         sound: 'V',
-        description: 'V (v) (as in Vine)',
+        description: '[v] (as in Vine)',
         phonema: 'v'
     },
     'CTLCTR' : {
         sound: 'W',
-        description: 'W (w) (as in Wit)',
+        description: '[w] (as in Wit)',
         phonema: 'w'
     },
     'CTLCTTCBB' : {
         sound: 'Y',
-        description: 'Y (j) (as in You)',
+        description: '[j] (as in You)',
         phonema: 'j'
     },
     'CTLCTTCBBCBR' : {
         sound: 'Z',
-        description: 'Z (z) (as in Zit)',
+        description: '[z] (as in Zit)',
         phonema: 'z'
     },
     'CTLCTTCTRCBLCBR' : {
         sound: 'ZH',
-        description: 'ZH (ʒ) (as in Azure)',
+        description: '[ʒ] (as in Azure)',
         phonema: 'ʒ'
     }
 };
 const VOWELS = {
     'VTLVTRVL' : {
         sound: 'A',
-        description: 'A (æ) (as in Glass)',
+        description: '[æ] (as in Glass)',
         phonema: 'æ'
     },
     'VTLVTRVBLVBR' : {
         sound: 'AR',
-        description: 'AR (ɑ:) (as in Arm)',
+        description: '[ɑ:] (as in Arm)',
         phonema: 'ɑ:'
     },
     'VTLVL' : {
         sound: 'AH',
-        description: 'AH (ɒ) (as in Swan)',
+        description: '[ɒ] (as in Swan)',
         phonema: 'ɒ'
     },
     'VTL' : {
         sound: 'AY',
-        description: 'AY (eɪ) (as in Bay)',
+        description: '[eɪ] (as in Bay)',
         phonema: 'eɪ'
     },
     'VLVBLVBR' : {
         sound: 'E',
-        description: 'E (e) (as in End)',
+        description: '[e] (as in End)',
         phonema: 'e'
     },
     'VTLVLVBLVBR' : {
         sound: 'EE',
-        description: 'EE (i:) (as in Bee)',
+        description: '[i:] (as in Bee)',
         phonema: 'i:'
     },
     'VTLVLVBR' : {
         sound: 'EER',
-        description: 'EER (ɪəʳ) (as in Beer)',
+        description: '[ɪəʳ] (as in Beer)',
         phonema: 'ɪəʳ'
     },
     'VTLVTR' : {
         sound: 'EH',
-        description: 'EH (ə) (as in The)',
+        description: '[ə] (as in The)',
         phonema: 'ə'
     },
     'VLVBR' : {
         sound: 'ERE',
-        description: 'ERE (eəʳ) (as in Air)',
+        description: '[eəʳ] (as in Air)',
         phonema: 'eəʳ'
     },
     'VBLVBR' : {
         sound: 'I',
-        description: 'I (ɪ) (as in Bit)',
+        description: '[ɪ] (as in Bit)',
         phonema: 'ɪ'
     },
     'VTR' : {
         sound: 'IE',
-        description: 'IE (aɪ) (as in Guy)',
+        description: '[aɪ] (as in Guy)',
         phonema: 'aɪ'
     },
     'VTRVLVBLVBR' : {
         sound: 'IR',
-        description: 'IR (ɜ:ʳ) (as in Bird)',
+        description: '[ɜ:ʳ] (as in Bird)',
         phonema: 'ɜ:ʳ'
     },
     'VTLVTRVLVBLVBR' : {
         sound: 'OH',
-        description: 'OH (aʊ) (as in Toe)',
+        description: '[aʊ] (as in Toe)',
         phonema: 'aʊ'
     },
     'VBL' : {
         sound: 'OI',
-        description: 'OI (ɔɪ) (as in Toy)',
+        description: '[ɔɪ] (as in Toy)',
         phonema: 'ɔɪ'
     },
     'VTLVTRVLVBL' : {
         sound: 'OO',
-        description: 'OO (u:) (as in Too)',
+        description: '[u:] (as in Too)',
         phonema: 'u:'
     },
     'VLVBL' : {
         sound: 'OU',
-        description: 'OU (ʊ) (as in Wolf)',
+        description: '[ʊ] (as in Wolf)',
         phonema: 'ʊ'
     },
     'VBR' : {
         sound: 'OW',
-        description: 'OW (aʊ) (as in How)',
+        description: '[aʊ] (as in How)',
         phonema: 'aʊ'
     },
     'VTLVTRVLVBR' : {
         sound: 'ORE',
-        description: 'ORE (ʊəʳ) (as in Your)',
+        description: '[ʊəʳ] (as in Your)',
         phonema: 'ʊəʳ'
     }
 };
