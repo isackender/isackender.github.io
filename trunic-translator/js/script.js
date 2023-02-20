@@ -285,6 +285,9 @@ const deleteGlyph = () => {
     if($('.word').length !== 0) {
         if($('.word').last().find('.glyph').length != 0) {
             $('.word').last().find('.glyph').last().remove();
+            if($('.word').last().find('.glyph').length == 0) {
+                $('.word').last().remove();
+            }
         } else {
             $('.word').last().remove();
             deleteGlyph();
