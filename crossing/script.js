@@ -1,7 +1,9 @@
 // Youtube API: https://developers.google.com/youtube/iframe_api_reference#Getting_Started
 // Playlist: http://www.youtube.com/playlist?list=PL24564FBB9784970B
-var sources = [
-	"hyIPaz3UJAI", // 12 am
+
+/**
+ * Old list
+   	"hyIPaz3UJAI", // 12 am
 	"kFSTf-q9qX4", // 1 am
 	"_ITM1vFiV6U",
 	"gWH27B8TPDA",
@@ -25,6 +27,32 @@ var sources = [
 	"oWmT9EGNuOU",
 	"vvw5eCl8okI",
 	"2ntrw94Pbe0" // 11 pm
+ */
+var sources = [
+	"", // 12 am
+	"", // 1 am
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"xiFMP15ibLQ", // 11 am
+	"ijg0DPxRL8k", // 12 pm
+	"", // 1 pm
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"",
+	"" // 11 pm
 ];
 
 $(document).ready(function() {
@@ -61,7 +89,7 @@ $(document).ready(function() {
 		$("#hours").html(( hours < 10 ? "0" : "" ) + hours);
 
 		// Changes
-        if(minutes == 00 && seconds == 00) {
+        if(minutes == 0 && seconds == 0) {
             changeTime(hours);
         }
 	},1000);
@@ -87,7 +115,7 @@ $(document).ready(function() {
 
 // 2. This code loads the IFrame Player API code asynchronously.
 var tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
+tag.src = "http://www.youtube.com/iframe_api";
 
 var firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
@@ -95,7 +123,7 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 var player;
 
 function changeTime(hr){
-	console.info("Hour: "+hr);
+	console.log("Hour: "+hr);
 	if (player) {
 		player.destroy();
 	}
