@@ -212,7 +212,9 @@ function changeTime(hr){
 var changed = false;
 
 function createPlayerCrossing(source){
-	player.loadVideoById(source);
+	if(player) {
+		player.loadVideoById(source);
+	}
 }
 
 // 3. This function creates an <iframe> (and YouTube player)
@@ -221,6 +223,16 @@ function createPlayerCrossing(source){
 function onYouTubeIframeAPIReady() {
 	var hrs = new Date().getHours();
 	changeTime(hrs);
+	
+	player = new YT.Player('player', {
+		height: '0',
+		width: '0',
+		videoId: DEFAULT_SOURCE_VIDEO_ID,
+		events: {
+			'onReady': onPlayerReady,
+			'onStateChange': onPlayerStateChange
+		},
+	});
 }
 
 // 4. The API will call this function when the video player is ready.
@@ -233,6 +245,7 @@ function onPlayerStateChange(e) {
 	if (e.data === YT.PlayerState.ENDED) {
 		var hrs = new Date().getHours();
 		changeTime(hrs);
+		player.loadVideoById(source);
 	}
 }
 
@@ -240,12 +253,3 @@ function stopVideo() {
 	player.stopVideo();
 }
 
-player = new YT.Player('player', {
-	height: '0',
-	width: '0',
-	videoId: DEFAULT_SOURCE_VIDEO_ID,
-	events: {
-		'onReady': onPlayerReady,
-		'onStateChange': onPlayerStateChange
-	},
-});
