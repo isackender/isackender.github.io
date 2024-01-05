@@ -44,8 +44,6 @@ table {
 }
 /*----------------------- RESET CSS -----------------------*/
 
-
-/* If you want you can use font-face */
 @font-face {
     font-family: 'BebasNeueRegular';
     src: url('./font/BebasNeue-webfont.eot');
@@ -74,13 +72,21 @@ body             {
     background-image: url(grass.jpg); background-repeat: repeat;
 }
 
+#loader          {
+    position: absolute;
+    height: 100%; width: 100%;
+    background: rgb(18,18,18);
+    background: linear-gradient(0deg, rgba(18,18,18,1) 0%, rgba(21,21,87,1) 35%, rgba(142,229,246,1) 100%);
+    z-index: 1;
+}
+
 #sky             {
     max-height: 1080px;
     background-color: transparent; background-image: url(dawn.png); background-repeat: no-repeat; background-attachment: scroll; background-position: 50% 50%; background-size: cover;
 }
 #container       {
     display: table; height: 100vh; width: 100vw;
-    text-align: center; box-shadow: 0px 5px 15px #888888;
+    text-align: center;
     background-color: transparent; background-image: url(clouds_dawn.png); background-repeat: repeat-x; background-attachment: scroll; background-position: 50% 50%; background-size: cover;
 }
 #clock           {
@@ -110,12 +116,76 @@ span#colon       {
     opacity: 0; font-size: 1.3em; line-height: 0em;
 }
 
+#controls        {
+    margin-left: 28em;
+    margin-top: 5em;
+}
+/*Range Reset*/
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    max-height: 1.2em;
+    max-width: 10em;
+    -webkit-transform: rotate(270deg);
+       -moz-transform: rotate(270deg);
+            transform: rotate(270deg);
+}
+ 
+ /* Removes default focus */
+ input[type="range"]:focus {
+   outline: none;
+ }
+ 
+ /***** Chrome, Safari, Opera and Edge Chromium styles *****/
+ /* slider track */
+ input[type="range"]::-webkit-slider-runnable-track {
+    background-color: #903000;
+    border-radius: 0.225em;
+    height: 0.225em; 
+ }
+ 
+ /* slider thumb */
+ input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    margin-top: -0.38em; /* Centers thumb on the track */
+ 
+    /*custom styles*/
+    background-color: #903000;
+    border-radius: 0.225em;
+    height: 1em;
+    width: 1em;
+ }
+ 
+ /******** Firefox styles ********/
+ /* slider track */
+ input[type="range"]::-moz-range-track {
+    background-color: #903000;
+    border-radius: 0.225em;
+    height: 0.225em;
+ }
+ 
+ /* slider thumb */
+ input[type="range"]::-moz-range-thumb {
+    border: none; /*Removes extra border that FF applies*/
+    border-radius: 0; /*Removes default border-radius that FF applies*/
+ 
+    /*custom styles*/
+    background-color: #903000;
+    border-radius: 0.225em;
+    height: 1em;
+    width: 1em;
+ }
+ 
+
 .easter          {
     width: 100%; padding-top: 20px; margin: 0 auto;
 }
 .section         {
     padding: 20px; margin: 0 auto;
-    text-align: center; color: #fafafa; font-family: 'BebasNeueRegular', sans-serif; font-weight: 300; font-size: 0.8em;
+    text-align: center; color: #fafafa; font-family: 'AnimalCrossing', sans-serif; font-size: 1.2em;
 }
 a                { color: #84ff97; text-decoration: none; }
 small            { font-size: 0.8em; }

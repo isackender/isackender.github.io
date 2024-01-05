@@ -238,6 +238,8 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady() {
 	let hrs = new Date().getHours();
 	changeTime(hrs);
+	renderVolume(player.getVolume());
+	hideLoader();
 }
 
 function onPlayerStateChange(e) {
@@ -246,4 +248,20 @@ function onPlayerStateChange(e) {
 		changeTime(hrs);
 	}
 }
+
+function hideLoader() {
+	$('#loader').fadeOut(400);
+}
+
+function renderVolume(value) {
+	$('#volume').value = value;
+}
+
+function setVideoVolume(value) {
+	player.setVolume(value);
+}
+
+$('#volume').on('input', function(){
+    setVideoVolume(this.value);
+}); 
 
