@@ -213,6 +213,7 @@ var changed = false;
 
 function createPlayerCrossing(source){
 	if(player) {
+		// Loads and plays video
 		player.loadVideoById(source);
 	}
 }
@@ -221,9 +222,6 @@ function createPlayerCrossing(source){
 //    after the API code downloads.
 
 function onYouTubeIframeAPIReady() {
-	var hrs = new Date().getHours();
-	changeTime(hrs);
-	
 	player = new YT.Player('player', {
 		height: '0',
 		width: '0',
@@ -238,17 +236,13 @@ function onYouTubeIframeAPIReady() {
 // 4. The API will call this function when the video player is ready.
 function onPlayerReady() {
 	let hrs = new Date().getHours();
-	player.stopVideo();
 	changeTime(hrs);
-	
-	player.playVideo();
 }
 
 function onPlayerStateChange(e) {
 	if (e.data === YT.PlayerState.ENDED) {
 		var hrs = new Date().getHours();
 		changeTime(hrs);
-		player.loadVideoById(source);
 	}
 }
 
