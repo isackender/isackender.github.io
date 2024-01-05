@@ -236,9 +236,12 @@ function onYouTubeIframeAPIReady() {
 }
 
 // 4. The API will call this function when the video player is ready.
-function onPlayerReady(event) {
-	stopVideo();
-	event.target.playVideo();
+function onPlayerReady() {
+	let hrs = new Date().getHours();
+	player.stopVideo();
+	changeTime(hrs);
+	
+	player.playVideo();
 }
 
 function onPlayerStateChange(e) {
@@ -247,9 +250,5 @@ function onPlayerStateChange(e) {
 		changeTime(hrs);
 		player.loadVideoById(source);
 	}
-}
-
-function stopVideo() {
-	player.stopVideo();
 }
 
