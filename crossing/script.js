@@ -1,58 +1,31 @@
 // Youtube API: https://developers.google.com/youtube/iframe_api_reference#Getting_Started
 // Playlist: http://www.youtube.com/playlist?list=PL24564FBB9784970B
 
-/**
- * Old list
-   	"hyIPaz3UJAI", // 12 am
-	"kFSTf-q9qX4", // 1 am
-	"_ITM1vFiV6U",
-	"gWH27B8TPDA",
-	"84V2PZa1F-c",
-	"K5W5WLKdnlg",
-	"QTZ3-oLu7cw",
-	"d3d7DdKBSrM",
-	"_Z_Eg5DgTe4",
-	"cdB3harSmZ8",
-	"-K1jZ0Oek18",
-	"nvKUou7Ty0c", // 11 am
-	"SRt7ISfi7OQ", // 12 pm
-	"QH8ICY7-qvg", // 1 pm
-	"u-bmQy-xi_I",
-	"Jr0nWQkyZb0",
-	"5nqWwV2kn7Y",
-	"ZTvNX1R5QlU",
-	"SOKGTIw2fCk",
-	"BD3lqQ9-8Ig",
-	"0jWetqSVGNc",
-	"oWmT9EGNuOU",
-	"vvw5eCl8okI",
-	"2ntrw94Pbe0" // 11 pm
- */
 var sources = [
-	"", // 12 am
-	"", // 1 am
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
+	"i3WvQhgi_vI", // 12 am
+	"JjsVG43xmVI", // 1 am
+	"NQ7Hs8y3DDI",
+	"edhjCXauT2o",
+	"q4qwPLTY-H4",
+	"diuqi3z3UEk",
+	"12Yst8_O1AU",
+	"Eg6JMROjyYQ",
+	"MoLchthmAjw",
+	"R4kOaT2DfFs",
+	"xtwx5iZLRnk",
 	"xiFMP15ibLQ", // 11 am
 	"ijg0DPxRL8k", // 12 pm
-	"", // 1 pm
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"",
-	"" // 11 pm
+	"xiFMP15ibLQ", // 1 pm
+	"U01vqNf8zwQ",
+	"-sGA35BbvGs",
+	"eSprCVvZJXw",
+	"X_Dj3fkxadA",
+	"Giwo0amPTY4",
+	"C9osVFAaDdQ",
+	"UwlOfA4oSGM",
+	"wF4pKEPPIxE",
+	"aBxMLVd27jo",
+	"LMmPoA8BXgY" // 11 pm
 ];
 
 $(document).ready(function() {
