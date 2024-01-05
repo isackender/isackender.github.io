@@ -96,126 +96,45 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 
-function changeTime(hr){
-	console.log('Hour: '+hr);
-	switch(hr) {
-		case 0: // 12am
-			updatePlayerCrossing(sources[0]);
-			break;
-		case 1: // 1am
-			updatePlayerCrossing(sources[1]);
-			break;
-		case 2:
-			updatePlayerCrossing(sources[2]);
-			break;
-		case 3:
-			updatePlayerCrossing(sources[3]);
-			break;
-		case 4:
-			updatePlayerCrossing(sources[4]);
-			break;
-		case 5:
-			updatePlayerCrossing(sources[5]);
-			break;
-		case 6:
-			updatePlayerCrossing(sources[6]);
-			break;
-		case 7:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[7]);
-			break;
-		case 8:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[8]);
-			break;
-		case 9:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[9]);
-			break;
-		case 10:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[10]);
-			break;
-		case 11: // 11am
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[11]);
-			break;
-		case 12: // 12pm
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[12]);
-			break;
-		case 13: // 1pm
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[13]);
-			break;
-		case 14:
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[14]);
-			break;
-		case 15:
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[15]);
-			break;
-		case 16:
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[16]);
-			break;
-		case 17:
-			$('#sky').css('background-image', 'url(noon.png)');
-			$('#container').css('background-image', 'url(clouds_noon.png)');
-			updatePlayerCrossing(sources[17]);
-			break;
-		case 18:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[18]);
-			break;
-		case 19:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[19]);
-			break;
-		case 20:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[20]);
-			break;
-		case 21:
-			$('#sky').css('background-image', 'url(dawn.png)');
-			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			updatePlayerCrossing(sources[21]);
-			break;
-		case 22: // 10pm
-			$('#sky').css('background-image', 'url(night.png)');
-			$('#container').css('background-image', 'url(clouds_night.png)');
-			updatePlayerCrossing(sources[22]);
-			break;
-		case 23: // 11pm
-			$('#sky').css('background-image', 'url(night.png)');
-			$('#container').css('background-image', 'url(clouds_night.png)');
-			updatePlayerCrossing(sources[23]);
-			break;
-		default:
+function changeTime(hour){
+	console.log('Hour: '+hour);
+
+	if (hour >= 0 && hour <= 6) {
+		// 0 - 12am, 1 - 1am...
+		updatePlayerCrossing(sources[hour]);
+		return;
 	}
-} // end changeTime()
 
-var changed = false;
+	if (hour >= 7 && hour <= 11) {
+		// 7 - 7am, 11 - 11am...
+		$('#sky').css('background-image', 'url(dawn.png)');
+		$('#container').css('background-image', 'url(clouds_dawn.png)');
+		updatePlayerCrossing(sources[hour]);
+		return;
+	}
 
-function updatePlayerCrossing(source){
-	if(player) {
-		// Loads and plays video
-		player.loadVideoById(source);
-		player.playVideo();
+	if (hour >= 12 && hour <= 17) {
+		// 12 - 12pm, 17 - 5pm...
+		$('#sky').css('background-image', 'url(noon.png)');
+		$('#container').css('background-image', 'url(clouds_noon.png)');
+		updatePlayerCrossing(sources[hour]);
+		return;
+	}
+
+	if (hour >= 18 && hour <= 21) {
+		// 18 - 6pm, 21 - 9pm...
+		$('#sky').css('background-image', 'url(dawn.png)');
+		$('#container').css('background-image', 'url(clouds_dawn.png)');
+		updatePlayerCrossing(sources[hour]);
+		return;
+	}
+
+	if (hour >= 22 && hour <= 23) {
+		// 22 - 10pm, 23 - 11pm...
+		$('#sky').css('background-image', 'url(night.png)');
+		$('#container').css('background-image', 'url(clouds_night.png)');
+		updatePlayerCrossing(sources[hour]);
+		return;
 	}
 }
 
@@ -246,6 +165,14 @@ function onPlayerStateChange(e) {
 	if (e.data === YT.PlayerState.ENDED) {
 		var hrs = new Date().getHours();
 		changeTime(hrs);
+	}
+}
+
+function updatePlayerCrossing(source){
+	if(player) {
+		// Loads and plays video
+		player.loadVideoById(source);
+		player.playVideo();
 	}
 }
 
