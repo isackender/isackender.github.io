@@ -100,110 +100,110 @@ function changeTime(hr){
 	console.log('Hour: '+hr);
 	switch(hr) {
 		case 0: // 12am
-			createPlayerCrossing(sources[0]);
+			updatePlayerCrossing(sources[0]);
 			break;
 		case 1: // 1am
-			createPlayerCrossing(sources[1]);
+			updatePlayerCrossing(sources[1]);
 			break;
 		case 2:
-			createPlayerCrossing(sources[2]);
+			updatePlayerCrossing(sources[2]);
 			break;
 		case 3:
-			createPlayerCrossing(sources[3]);
+			updatePlayerCrossing(sources[3]);
 			break;
 		case 4:
-			createPlayerCrossing(sources[4]);
+			updatePlayerCrossing(sources[4]);
 			break;
 		case 5:
-			createPlayerCrossing(sources[5]);
+			updatePlayerCrossing(sources[5]);
 			break;
 		case 6:
-			createPlayerCrossing(sources[6]);
+			updatePlayerCrossing(sources[6]);
 			break;
 		case 7:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[7]);
+			updatePlayerCrossing(sources[7]);
 			break;
 		case 8:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[8]);
+			updatePlayerCrossing(sources[8]);
 			break;
 		case 9:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[9]);
+			updatePlayerCrossing(sources[9]);
 			break;
 		case 10:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[10]);
+			updatePlayerCrossing(sources[10]);
 			break;
 		case 11: // 11am
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[11]);
+			updatePlayerCrossing(sources[11]);
 			break;
 		case 12: // 12pm
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[12]);
+			updatePlayerCrossing(sources[12]);
 			break;
 		case 13: // 1pm
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[13]);
+			updatePlayerCrossing(sources[13]);
 			break;
 		case 14:
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[14]);
+			updatePlayerCrossing(sources[14]);
 			break;
 		case 15:
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[15]);
+			updatePlayerCrossing(sources[15]);
 			break;
 		case 16:
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[16]);
+			updatePlayerCrossing(sources[16]);
 			break;
 		case 17:
 			$('#sky').css('background-image', 'url(noon.png)');
 			$('#container').css('background-image', 'url(clouds_noon.png)');
-			createPlayerCrossing(sources[17]);
+			updatePlayerCrossing(sources[17]);
 			break;
 		case 18:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[18]);
+			updatePlayerCrossing(sources[18]);
 			break;
 		case 19:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[19]);
+			updatePlayerCrossing(sources[19]);
 			break;
 		case 20:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[20]);
+			updatePlayerCrossing(sources[20]);
 			break;
 		case 21:
 			$('#sky').css('background-image', 'url(dawn.png)');
 			$('#container').css('background-image', 'url(clouds_dawn.png)');
-			createPlayerCrossing(sources[21]);
+			updatePlayerCrossing(sources[21]);
 			break;
 		case 22: // 10pm
 			$('#sky').css('background-image', 'url(night.png)');
 			$('#container').css('background-image', 'url(clouds_night.png)');
-			createPlayerCrossing(sources[22]);
+			updatePlayerCrossing(sources[22]);
 			break;
 		case 23: // 11pm
 			$('#sky').css('background-image', 'url(night.png)');
 			$('#container').css('background-image', 'url(clouds_night.png)');
-			createPlayerCrossing(sources[23]);
+			updatePlayerCrossing(sources[23]);
 			break;
 		default:
 	}
@@ -211,10 +211,11 @@ function changeTime(hr){
 
 var changed = false;
 
-function createPlayerCrossing(source){
+function updatePlayerCrossing(source){
 	if(player) {
 		// Loads and plays video
 		player.loadVideoById(source);
+		player.playVideo();
 	}
 }
 
