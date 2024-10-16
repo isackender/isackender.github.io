@@ -174,6 +174,8 @@ function updatePlayerCrossing(source){
 	if(player) {
 		// Loads and plays video
 		player.loadVideoById(source);
+		// Start muted to enable autoplay
+		player.setVolume(0);
 		player.playVideo();
 	}
 }
