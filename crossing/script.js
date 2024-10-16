@@ -99,12 +99,6 @@ var player;
 function changeTime(hour){
 	console.log('Hour: '+hour);
 
-	if (hour >= 0 && hour <= 6) {
-		// 0 - 12am, 1 - 1am...
-		updatePlayerCrossing(sources[hour]);
-		return;
-	}
-
 	if (hour >= 7 && hour <= 11) {
 		// 7 - 7am, 11 - 11am...
 		$('#sky').css('background-image', 'url(dawn.png)');
@@ -131,6 +125,14 @@ function changeTime(hour){
 
 	if (hour >= 22 && hour <= 23) {
 		// 22 - 10pm, 23 - 11pm...
+		$('#sky').css('background-image', 'url(night.png)');
+		$('#container').css('background-image', 'url(clouds_night.png)');
+		updatePlayerCrossing(sources[hour]);
+		return;
+	}
+
+	if (hour >= 0 && hour <= 6) {
+		// 0 - 12am, 1 - 1am...
 		$('#sky').css('background-image', 'url(night.png)');
 		$('#container').css('background-image', 'url(clouds_night.png)');
 		updatePlayerCrossing(sources[hour]);
