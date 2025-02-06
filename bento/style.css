@@ -1,0 +1,221 @@
+:root {
+  font-family: system-ui, sans-serif;
+  font-size: clamp(14px, 5vw, 20px);
+  --dark-color: #5a5d64ff;
+  --light-color: #edf2f4ff;
+  --background-color: #1a1a1bff;
+  --secondary-color: #757e93ff;
+  --antiflash-white: #edf2f4ff;
+  --important-color: #e03232ff;
+  --fire-engine-red: #b10903ff;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--light-color);
+  margin: 0;
+}
+
+article {
+  background-color: var(--light-color);
+  color: var(--dark-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+article figure {
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+main {
+  width: 90%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-block-start: 2rem;
+}
+
+.bento {
+  --bento-cols: 5;
+  --bento-rows: 3;
+  --bento-border-radius: 1rem;
+  --bento-gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(var(--bento-cols), 1fr);
+  grid-template-rows: repeat(var(--bento-rows), 1fr);
+  width: 100%;
+  aspect-ratio: var(--bento-cols) / var(--bento-rows);
+}
+
+.bento>* {
+  overflow: hidden;
+  position: relative;
+  margin: calc(var(--bento-gap) / 2);
+  border-radius: var(--bento-border-radius);
+
+  display: flex;
+  flex-direction: column-reverse;
+
+  container-type: size;
+  container-name: bento-item;
+
+  transition: transform 0.3s ease-out, filter 0.3s ease-out;
+}
+
+.bento > *:hover {
+  transform: translateY(-0.5rem);
+  filter: drop-shadow(0 0.5rem 0.1rem #0009);
+}
+
+.bento.layout-1 > * figure img {
+  transition: transform 1s;
+}
+
+.bento.layout-1 > *:hover figure img {
+  transform: scale(1.20) translateY(2%);
+}
+
+@media screen and (aspect-ratio < 1) {
+
+  .bento {
+    --bento-cols: 3;
+    --bento-rows: 5;
+  }
+
+}
+
+.bento.layout-1> :nth-child(1) {
+  grid-column: span 2;
+  grid-row: span 2;
+  background-color: var(--important-color);
+  color: var(--light-color);
+}
+
+.bento.layout-1> :nth-child(2) {
+  grid-row: span 2;
+  background-color: var(--secondary-color);
+  color: var(--light-color);
+}
+
+.bento.layout-1> :nth-child(3),
+.bento.layout-1> :nth-child(4),
+.bento.layout-1> :nth-child(8) {
+  grid-column: span 2;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+}
+
+.bento.layout-1> :nth-child(n + 9) {
+  display: none;
+}
+
+@media screen and (aspect-ratio < 1) {
+
+  .bento.layout-1 {
+    --bento-cols: 3;
+    --bento-rows: 5;
+  }
+
+  .bento.layout-1> :nth-child(n) {
+    /* Reset spans */
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .bento.layout-1> :nth-child(1),
+  .bento.layout-1> :nth-child(8) {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .bento.layout-1> :nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .bento.layout-1> :nth-child(7) {
+    grid-column: 1;
+    grid-row: 5;
+  }
+  
+}
+
+.bento.layout-1 h1, .bento.layout-1 h2, .bento.layout-1 h3, .bento.layout-1 p {
+  margin: 0;
+}
+
+.bento.layout-1>* figure {
+  position: absolute;
+  inset: 0;
+}
+.bento.layout-1>* header {
+  position: relative;
+  z-index: 2;
+  background-color: inherit;
+}
+
+.bento.layout-1>* figure img {
+  object-fit: cover;
+  height: 100%;
+}
+
+.bento.layout-1>* header {
+  position: absolute;
+  bottom: 0;
+  inset-inline: 0;
+  border-radius: 0;
+  font-size: 70%;
+  padding: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bento > *,
+  .bento.layout-1 > * header,
+  .bento.layout-1 > * figure img {
+    transition: none;
+  }
+  
+  .bento > *:hover {
+    transform: none;
+  }
+  
+  .bento.layout-1 > *:hover figure img {
+    transform: none;
+  }
+}
+
+@container bento-item (width < 200px) and (height < 200px) {
+  .bento.layout-1>* header {
+    font-size: 0.7rem;
+  }
+  
+  .bento.layout-1>* header p {
+    display: none;
+  }
+}
+
+/* Horizontal bento items */
+@container bento-item (aspect-ratio > 1) {
+  .bento.layout-1>* header {
+    top: 0;
+    right: 60%;
+  }
+  
+  .bento.layout-1>* figure {
+    inset: 0 0 0 40%;
+  }
+}
+
+/* Big squared bento items */
+@container bento-item (aspect-ratio = 1) and (width > 200px) {
+  .bento.layout-1>* header {
+    font-size: 120%;
+    background-color: #00000066;
+    color: var(--light-color);
+    /* In firefox, backdrop-filter cannot be used together with filter (line 71) */
+    /*backdrop-filter: blur(4px);*/
+  }
+}
