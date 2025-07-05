@@ -1,0 +1,128 @@
+:root {
+  --corner-offset: 4rem;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: #131313;
+  height: 100%;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+/* Fullscreen hero */
+#hero {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+#bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  display: block;
+}
+
+/* Texto encima del canvas */
+.overlay {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  z-index: 1;
+  max-width: 80%;
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.1;
+
+  /* Tamaño dinámico: mínimo 2rem, ideal 6vw, máximo 7rem */
+  font-size: clamp(4rem, 6vw, 7rem);
+}
+
+.logo-subtext {
+  color: #919191;
+  font-weight: thin;
+  text-align: left;
+  line-height: 2.2;
+  
+
+  /* Tamaño dinámico: mínimo 2rem, ideal 6vw, máximo 7rem */
+  font-size: clamp(1.8rem, 2vw, 3rem);
+}
+
+.logo-subtext .see {
+  color: #fafafa;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.corner {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-color: #575757;
+  border-style: solid;
+  z-index: 2;
+}
+
+/* Esquinas individuales con padding visual */
+.top-left {
+  top: var(--corner-offset);
+  left: var(--corner-offset);
+  border-width: 0.1rem 0 0 0.1rem;
+}
+
+.top-right {
+  top: var(--corner-offset);
+  right: var(--corner-offset);
+  border-width: 0.1rem 0.1rem 0 0;
+}
+
+.bottom-left {
+  bottom: var(--corner-offset);
+  left: var(--corner-offset);
+  border-width: 0 0 0.1rem 0.1rem;
+}
+
+.bottom-right {
+  bottom: var(--corner-offset);
+  right: var(--corner-offset);
+  border-width: 0 0.1rem 0.1rem 0;
+}
+
+
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* Next section for testing scroll */
+.projects-section {
+  padding: 80px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+/* Responsive */
+/*
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 2.5rem;
+    left: 5%;
+  }
+}
