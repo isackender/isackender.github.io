@@ -27,6 +27,35 @@ yRotationGroup.add(xRotationGroup);
 const canvas = renderer.domElement;
 const mouse = new THREE.Vector2(0.5, 0.5);
 let hoverActive = false;
+let isMobile = /Mobi|Android/i.test(navigator.userAgent);
+let gyroActive = false;
+
+if (isMobile && window.DeviceOrientationEvent) {
+  function handleOrientation(event) {
+    gyroActive = true;
+
+    const gamma = event.gamma || 0;
+    const beta = event.beta || 0;
+
+    const x = THREE.MathUtils.clamp((gamma + 45) / 90, 0, 1);
+    const y = THREE.MathUtils.clamp((beta + 90) / 180, 0, 1);
+
+    mouse.x = x;
+    mouse.y = 1.0 - y;
+    hoverActive = true;
+  }
+
+  if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+    DeviceOrientationEvent.requestPermission().then(response => {
+      if (response === 'granted') {
+        window.addEventListener('deviceorientation', handleOrientation, true);
+      }
+    }).catch(console.error);
+  } else {
+    window.addEventListener('deviceorientation', handleOrientation, true);
+  }
+}
+
 let lastClientX = 0;
 let lastClientY = 0;
 
