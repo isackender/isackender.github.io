@@ -74,10 +74,12 @@ document.addEventListener('mousemove', (event) => {
   updateMousePositionFromEvent(event);
 });
 
-document.addEventListener('scroll', () => {
-  const fakeEvent = { clientX: lastClientX, clientY: lastClientY };
-  updateMousePositionFromEvent(fakeEvent);
-}, true);
+if (!isMobile) {
+  document.addEventListener('scroll', () => {
+    const fakeEvent = { clientX: lastClientX, clientY: lastClientY };
+    updateMousePositionFromEvent(fakeEvent);
+  }, true);
+}
 
 const ringColor = 0x4e4e4e;
 const resolution = new THREE.Vector2(window.innerWidth, window.innerHeight);
