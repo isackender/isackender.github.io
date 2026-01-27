@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Comandos de chat</title>
+	
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Jost:ital,wght@0,100..900;1,100..900&family=Orbitron:wght@400..900&family=Roboto:wght@300&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --purple-0: #7B4FBD;
+      --purple-1: #3B1A7D;
+      --purple-2: #271663;
+      --purple-3: #211647;
+      --purple-4: #060517;
+
+      --card-bg: rgba(255, 255, 255, 0.08);
+      --card-border: rgba(255, 255, 255, 0.18);
+      --text-main: #ffffff;
+      --text-muted: rgba(255, 255, 255, 0.7);
+      --accent: #c77dff;
+    }
+
+    * { box-sizing: border-box; }
+		
+		.orbitron {
+			font-family: "Orbitron", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 400;
+			font-style: normal;
+		}
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text-main);
+
+      background:
+        radial-gradient(
+          circle at top center,
+          var(--purple-1) 0%,
+          var(--purple-2) 30%,
+          var(--purple-3) 55%,
+          var(--purple-4) 80%
+        );
+
+      background-attachment: fixed;
+    }
+
+    header {
+      padding: 32px 20px 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: 22px;
+			font-family: "Orbitron", sans-serif;
+			font-optical-sizing: auto;
+			font-weight: 600;
+			font-style: normal;
+    }
+		
+		.title {
+			display: flex;
+			align-items: center;
+			gap: 14px;
+		}
+
+		.avatar {
+			width: 64px;
+			height: 64px;
+			border-radius: 12px;
+			object-fit: cover;
+			background: rgba(255, 255, 255, 0.1);
+			box-shadow:
+				0 6px 18px rgba(0, 0, 0, 0.35),
+				inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+		}
+
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    input[type="search"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 12px 14px;
+      font-size: 14px;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
+      background: rgba(0, 0, 0, 0.25);
+      color: var(--text-main);
+      outline: none;
+      backdrop-filter: blur(6px);
+    }
+
+    input[type="search"]::placeholder { color: var(--text-muted); }
+    input[type="search"]:focus { border-color: var(--text-muted); }
+
+    .counter {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 16px 20px 40px;
+    }
+
+    .list {
+      display: grid;
+      gap: 0.5em;
+    }
+
+    /* Tarjeta clicable */
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      backdrop-filter: blur(10px);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+      position: relative;
+    }
+
+    .item:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+
+    .item:active { transform: scale(0.985); }
+
+    .command {
+      margin: 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 1.2em;
+			font-weight: bold;
+      color: #f3e8ff;
+      word-break: break-all;
+    }
+
+    .description {
+      margin: 6px 0 0;
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Icono minimalista (SVG) + estado copiado */
+    .copy-affordance {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 0px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.18);
+      color: rgba(255, 255, 255, 0.82);
+      transition: transform 0.15s ease, border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+      position: relative;
+    }
+
+    .item:hover .copy-affordance {
+      transform: scale(1.03);
+      border-color: rgba(255, 255, 255, 0.22);
+      background: rgba(0, 0, 0, 0.22);
+      color: #ffffff;
+    }
+
+    .copy-affordance svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    .copy-icon, .check-icon { 
+			position: absolute;
+			transition: opacity 0.15s ease;
+		}
+		
+		.copy-icon { opacity: 1; }
+		.check-icon { opacity: 0; }
+
+    /* Pill “Copiado” */
+    .copy-affordance::after {
+      content: "Copiado";
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%) translateX(6px);
+      opacity: 0;
+      pointer-events: none;
+      font-size: 12px;
+      color: #f3e8ff;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent), var(--purple-1));
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+      white-space: nowrap;
+    }
+
+    /* Estado copiado */
+    .item.copied .copy-affordance {
+      color: #f3e8ff;
+      background: linear-gradient(135deg, var(--accent), var(--purple-1));
+      border-color: rgba(255, 255, 255, 0.0);
+			border: 0px;
+    }
+
+		.item.copied .copy-icon { opacity: 0; }
+		.item.copied .check-icon { opacity: 1; }
+
+    .item.copied .copy-affordance::after {
+      opacity: 1;
+      transform: translateY(-50%) translateX(0);
+    }
+
+    .empty {
+      margin-top: 32px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    /* Accesibilidad: enfoque por teclado si decides añadir tabindex más adelante */
+    .item:focus-visible {
+      outline: 2px solid rgba(199, 125, 255, 0.75);
+      outline-offset: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="title">
+			<img
+				src="avatar.png"
+				alt="Avatar 16Bit_HER0"
+				class="avatar"
+			/>
+			<span>Comandos 16Bit_HER0</span>
+		</h1>
+
+    <div class="controls">
+      <input id="search" type="search" placeholder="Buscar comando o descripción…" />
+      <span id="counter" class="counter"></span>
+    </div>
+  </header>
+
+  <main>
+    <div id="list" class="list"></div>
+    <div id="empty" class="empty" hidden>No hay resultados</div>
+  </main>
+
+  <script>
+    const DATA_URL = "comandos.json";
+
+    const listEl = document.getElementById("list");
+    const emptyEl = document.getElementById("empty");
+    const searchEl = document.getElementById("search");
+    const counterEl = document.getElementById("counter");
+
+    let items = [];
+    let copiedResetTimer = null;
+
+    function normalise(item) {
+      return {
+        command: String(item.command ?? "").trim(),
+        description: String(item.description ?? "").trim()
+      };
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, c => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+      }[c]));
+    }
+
+    async function loadData() {
+      const res = await fetch(DATA_URL, { cache: "no-store" });
+      if (!res.ok) throw new Error("No se pudo cargar comandos.json");
+      return res.json();
+    }
+
+    async function copyToClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return true;
+      } catch (e) {
+        // Fallback simple
+        const ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        try {
+          document.execCommand("copy");
+          return true;
+        } catch (err) {
+          return false;
+        } finally {
+          document.body.removeChild(ta);
+        }
+      }
+    }
+
+    function setCopiedState(row, enabled) {
+      row.classList.toggle("copied", enabled);
+    }
+
+    function render(data) {
+      listEl.innerHTML = "";
+      counterEl.textContent = data.length ? data.length + " comando(s)" : "";
+      emptyEl.hidden = data.length !== 0;
+
+      for (const item of data) {
+        const row = document.createElement("div");
+        row.className = "item";
+        row.setAttribute("role", "button");
+        row.setAttribute("aria-label", "Copiar comando " + item.command);
+
+        row.innerHTML = `
+          <div>
+            <p class="command">${escapeHtml(item.command)}</p>
+            <p class="description">${escapeHtml(item.description)}</p>
+          </div>
+
+          <div class="copy-affordance" aria-hidden="true" title="Click para copiar">
+            <!-- Icono tipo “copiar” (doble documento) -->
+            <svg class="copy-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+
+            <!-- Check minimalista para estado “copiado” -->
+            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 6L9 17l-5-5"></path>
+            </svg>
+          </div>
+        `;
+
+        // Click en toda la tarjeta (evita seleccionar texto accidentalmente)
+        row.addEventListener("mousedown", (e) => e.preventDefault());
+
+        row.addEventListener("click", async () => {
+          const ok = await copyToClipboard(item.command);
+          if (!ok) return;
+
+          // Resetea cualquier estado previo
+          if (copiedResetTimer) clearTimeout(copiedResetTimer);
+
+          // Marca esta tarjeta como copiada y desmarca otras
+          const prev = listEl.querySelector(".item.copied");
+          if (prev && prev !== row) setCopiedState(prev, false);
+
+          setCopiedState(row, true);
+
+          copiedResetTimer = setTimeout(() => {
+            setCopiedState(row, false);
+          }, 1100);
+        });
+
+        listEl.appendChild(row);
+      }
+    }
+
+    function applyFilter() {
+      const term = searchEl.value.toLowerCase().trim();
+      render(
+        term
+          ? items.filter(i =>
+              i.command.toLowerCase().includes(term) ||
+              i.description.toLowerCase().includes(term)
+            )
+          : items
+      );
+    }
+
+    (async function init() {
+      const raw = await loadData();
+      items = raw.map(normalise).filter(i => i.command);
+      render(items);
+      searchEl.addEventListener("input", applyFilter);
+    })().catch(err => {
+      emptyEl.hidden = false;
+      emptyEl.textContent = err.message;
+    });
+  </script>
+</body>
+</html>
