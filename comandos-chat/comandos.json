@@ -1,0 +1,18 @@
+[
+  {
+    "command": "!sfxSpecial",
+    "description": "SFX Special sound"
+  },
+  {
+    "command": "!command",
+    "description": "A command"
+  },
+  {
+    "command": "!command2",
+    "description": "Another command"
+  },
+  {
+    "command": "!points",
+    "description": "Check points"
+  }
+]
