@@ -50,9 +50,11 @@
     .checkpoint .halo { fill: none; stroke: transparent; stroke-width: 1; }
     .checkpoint:hover .halo, .checkpoint:focus-visible .halo { stroke: #fff; }
     .checkpoint .symbol { fill: #000; stroke: #666; stroke-width: 1.7; }
-    .checkpoint[data-state="1"] .symbol { stroke: #fff; }
-    .checkpoint[data-state="2"] .symbol,
-    .checkpoint[data-state="3"] .symbol { fill: #fff; stroke: #fff; }
+    .checkpoint[data-state="0"] + foreignObject { display: none; }
+		.checkpoint[data-state="1"] .symbol { stroke: #fff; }
+    .checkpoint[data-state="2"] .symbol { fill: #fff; stroke: #fff; }
+    .checkpoint[data-state="3"] .symbol { fill: #666; stroke: #666; }
+		.checkpoint[data-state="3"] + foreignObject { display: none; }
     .checkpoint .glyph { fill: #000; font: 700 13px Consolas, monospace; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
     .checkpoint:not([data-state="3"]) .glyph { display: none; }
 
@@ -303,7 +305,7 @@
         input.type = 'number';
         input.min = '0';
         input.step = '1';
-        input.placeholder = '☆';
+        input.placeholder = '-';
         input.value = stars[level][id] ?? '';
         input.setAttribute('aria-label', `Level ${level}, ${description}, stars remaining`);
         input.title = `Stars remaining · Level ${level} · ${description}`;
