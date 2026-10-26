@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Plane Checkpoints</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Consolas, 'SFMono-Regular', monospace;
+    }
+
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #000; color: #fff; }
+
+    header {
+      max-width: 1100px;
+      margin: auto;
+      padding: 24px 22px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    h1 { margin: 0; font-size: 15px; font-weight: 500; letter-spacing: .15em; }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 11px; color: #bbb; }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .mark { display: inline-block; width: 11px; height: 11px; border: 1px solid #555; }
+    .mark.discovered { border-color: #fff; }
+    .mark.open, .mark.completed { background: #fff; border-color: #fff; }
+    .mark.completed { position: relative; }
+    .mark.completed::after { content: '✓'; position: absolute; top: -3px; left: 1px; color: #000; font-size: 10px; }
+
+    .scene { max-width: 1050px; margin: auto; padding: 0 16px 30px; }
+    .plane { position: relative; height: 340px; max-width: 920px; margin: 0 auto -48px; }
+		.plane:nth-child(even) { margin-top: 30px; }
+    .plane:last-child { margin-bottom: 5px; }
+    .plane svg { display: block; width: 100%; height: 100%; overflow: visible; }
+    .level-tag { position: absolute; left: 1%; top: 18%; font-size: 12px; letter-spacing: .1em; color: #ccc; }
+
+    .plane-border { fill: #000; stroke: #bcbcbc; stroke-width: 1.2; pointer-events: none; }
+    .plane-grid { fill: none; stroke: #4a4a4a; stroke-width: .75; pointer-events: none; }
+    .section-boundary { fill: none; stroke: #777; stroke-width: 1; stroke-dasharray: 4 4; pointer-events: none; }
+    .section-label { fill: #fff; font-size: 22px; font-weight: 600; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+
+    .checkpoint { cursor: pointer; outline: none; }
+    .checkpoint .hit { fill: transparent; }
+    .checkpoint .halo { fill: none; stroke: transparent; stroke-width: 1; }
+    .checkpoint:hover .halo, .checkpoint:focus-visible .halo { stroke: #fff; }
+    .checkpoint .symbol { fill: #000; stroke: #666; stroke-width: 1.7; }
+    .checkpoint[data-state="1"] .symbol { stroke: #fff; }
+    .checkpoint[data-state="2"] .symbol,
+    .checkpoint[data-state="3"] .symbol { fill: #fff; stroke: #fff; }
+    .checkpoint .glyph { fill: #000; font: 700 13px Consolas, monospace; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
+    .checkpoint:not([data-state="3"]) .glyph { display: none; }
+
+    /* Editable remaining-star count beneath each checkpoint. */
+    .star-input {
+      width: 36px;
+      height: 19px;
+      padding: 0;
+      border: 1px solid #555;
+      border-radius: 2px;
+      background: #000;
+      color: #fff;
+      font: 11px Consolas, monospace;
+      text-align: center;
+      appearance: textfield;
+      -moz-appearance: textfield;
+    }
+    .star-input:focus { outline: 1px solid #fff; border-color: #fff; }
+    .star-input::-webkit-inner-spin-button,
+    .star-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+
+    .toolbar { max-width: 1000px; margin: 12px auto 30px; padding: 0 22px; display: flex; justify-content: space-between; align-items: center; gap: 15px; flex-wrap: wrap; }
+    #status { color: #aaa; font-size: 12px; }
+    button { font: inherit; color: #fff; background: #000; border: 1px solid #777; cursor: pointer; }
+    button:hover, button:focus-visible { border-color: #fff; outline: none; }
+    #reset { padding: 9px 12px; font-size: 11px; }
+
+    @media (max-width: 650px) {
+      .plane { height: 240px; margin-bottom: -25px; }
+      .level-tag { top: 10%; font-size: 10px; }
+      header { padding-top: 20px; }
+      .legend { gap: 9px; font-size: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>PLANE CHECKPOINTS</h1>
+    <div class="legend" aria-label="Checkpoint states">
+      <span><i class="mark"></i> Undiscovered</span>
+      <span><i class="mark discovered"></i> Discovered</span>
+      <span><i class="mark open"></i> Open</span>
+      <span><i class="mark completed"></i> Completed</span>
+    </div>
+  </header>
+
+  <main id="scene" class="scene"></main>
+
+  <footer class="toolbar">
+    <span id="status" aria-live="polite"></span>
+    <button id="reset" type="button">RESET ALL</button>
+  </footer>
+
+  <script>
+    (() => {
+      'use strict';
+
+      // Keep the v2 storage key to preserve existing progress.
+      const STORAGE_KEY = 'plane-checkpoints-v2';
+      const STARS_STORAGE_KEY = 'plane-checkpoints-stars-v1';
+      const LEVEL_COUNT = 2;
+      const CHECKPOINT_IDS = ['HM', 'MS', 'SB', 'BH', 'WE', 'NS'];
+      const STATES = ['Undiscovered', 'Discovered', 'Open', 'Completed'];
+      const SVG_NS = 'http://www.w3.org/2000/svg';
+
+      const scene = document.getElementById('scene');
+      const status = document.getElementById('status');
+      const checkpoints = [];
+      const starInputs = [];
+
+      function loadProgress() {
+        let saved = {};
+        try {
+          saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') || {};
+        } catch (error) {
+          console.warn('Could not read saved progress:', error);
+        }
+
+        const progress = {};
+        for (let level = 1; level <= LEVEL_COUNT; level++) {
+          progress[level] = {};
+          for (const id of CHECKPOINT_IDS) {
+            const value = Number(saved?.[level]?.[id]);
+            progress[level][id] = Number.isInteger(value) && value >= 0 && value < STATES.length
+              ? value
+              : 0;
+          }
+        }
+        return progress;
+      }
+
+      // Star counts are stored separately so existing checkpoint states remain intact.
+      function loadStars() {
+        let saved = {};
+        try {
+          saved = JSON.parse(localStorage.getItem(STARS_STORAGE_KEY) || '{}') || {};
+        } catch (error) {
+          console.warn('Could not read saved stars:', error);
+        }
+
+        const result = {};
+        for (let level = 1; level <= LEVEL_COUNT; level++) {
+          result[level] = {};
+          for (const id of CHECKPOINT_IDS) {
+            const value = saved?.[level]?.[id];
+            result[level][id] = Number.isInteger(value) && value >= 0 ? value : null;
+          }
+        }
+        return result;
+      }
+
+      const progress = loadProgress();
+      const stars = loadStars();
+
+      function saveStars() {
+        try {
+          localStorage.setItem(STARS_STORAGE_KEY, JSON.stringify(stars));
+          return true;
+        } catch (error) {
+          console.warn('Could not save stars:', error);
+          return false;
+        }
+      }
+
+      function updateStars(level, id, value) {
+        // Empty means unrecorded; zero is a valid remaining-star count.
+        if (value === '') {
+          stars[level][id] = null;
+        } else if (/^\d+$/.test(value)) {
+          stars[level][id] = Number(value);
+        } else {
+          return;
+        }
+        const saved = saveStars();
+        for (const entry of starInputs) {
+          if (entry.level === level && entry.id === id && entry.input !== document.activeElement) {
+            entry.input.value = stars[level][id] ?? '';
+          }
+        }
+        refreshCheckpoints(saved);
+      }
+
+      function saveProgress() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));
+          return true;
+        } catch (error) {
+          console.warn('Could not save progress:', error);
+          return false;
+        }
+      }
+
+      function svgElement(tag, attributes = {}, parent = null) {
+        const element = document.createElementNS(SVG_NS, tag);
+        for (const [name, value] of Object.entries(attributes)) {
+          element.setAttribute(name, value);
+        }
+        if (parent) parent.appendChild(element);
+        return element;
+      }
+
+      function drawLine(svg, from, to, className) {
+        svgElement('line', {
+          x1: from[0], y1: from[1], x2: to[0], y2: to[1],
+          class: className
+        }, svg);
+      }
+
+      // Isometric projection: (x, y) are coordinates on a square plane.
+      // The projected square is a diamond with corners top/right/bottom/left.
+      function project(x, y) {
+        return [450 + 176 * (x - y), 155 + 68 * (x + y)];
+      }
+
+      function drawGrid(svg) {
+        const corners = [
+          project(-1, -1), project(1, -1),
+          project(1, 1), project(-1, 1)
+        ];
+        svgElement('polygon', {
+          points: corners.map(point => point.join(',')).join(' '),
+          class: 'plane-border'
+        }, svg);
+
+        for (let step = 0; step <= 20; step++) {
+          const coordinate = -1 + step / 10;
+          drawLine(svg, project(coordinate, -1), project(coordinate, 1), 'plane-grid');
+          drawLine(svg, project(-1, coordinate), project(1, coordinate), 'plane-grid');
+        }
+
+        // These are diagonal on SCREEN (NW-SE and NE-SW), not vertical/horizontal.
+        // They separate H, M, S, B into four triangular sectors.
+        drawLine(svg, project(0, -1), project(0, 1), 'section-boundary');
+        drawLine(svg, project(-1, 0), project(1, 0), 'section-boundary');
+      }
+
+      function drawLabel(svg, text, x, y) {
+        const [px, py] = project(x, y);
+        const label = svgElement('text', {
+          x: px, y: py, class: 'section-label'
+        }, svg);
+        label.textContent = text;
+      }
+
+      function advanceCheckpoint(level, id) {
+        progress[level][id] = (progress[level][id] + 1) % STATES.length;
+        const saved = saveProgress();
+        refreshCheckpoints(saved);
+      }
+
+      function drawCheckpoint(svg, level, id, x, y, description) {
+        const [cx, cy] = project(x, y);
+        const group = svgElement('g', {
+          class: 'checkpoint',
+          tabindex: '0',
+          role: 'button',
+          'data-state': progress[level][id]
+        }, svg);
+
+        svgElement('circle', { cx, cy, r: 19, class: 'hit' }, group);
+        svgElement('circle', { cx, cy, r: 12, class: 'halo' }, group);
+        svgElement('rect', {
+          x: cx - 7, y: cy - 7, width: 14, height: 14,
+          rx: 1, class: 'symbol'
+        }, group);
+
+        const checkmark = svgElement('text', {
+          x: cx, y: cy + 1, class: 'glyph'
+        }, group);
+        checkmark.textContent = '✓';
+
+        group.addEventListener('click', () => advanceCheckpoint(level, id));
+        group.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            advanceCheckpoint(level, id);
+          }
+        });
+
+        checkpoints.push({ element: group, level, id, description });
+
+        // Separate number input: editing stars never advances the checkpoint state.
+        const inputContainer = svgElement('foreignObject', {
+          x: cx - 18, y: cy + 11, width: 36, height: 22
+        }, svg);
+        const input = document.createElement('input');
+        input.className = 'star-input';
+        input.type = 'number';
+        input.min = '0';
+        input.step = '1';
+        input.placeholder = '☆';
+        input.value = stars[level][id] ?? '';
+        input.setAttribute('aria-label', `Level ${level}, ${description}, stars remaining`);
+        input.title = `Stars remaining · Level ${level} · ${description}`;
+        input.addEventListener('input', () => updateStars(level, id, input.value));
+        input.addEventListener('click', event => event.stopPropagation());
+        inputContainer.appendChild(input);
+        starInputs.push({ input, level, id });
+      }
+
+      function drawPlane(level) {
+        const wrapper = document.createElement('section');
+        wrapper.className = 'plane';
+
+        const tag = document.createElement('div');
+        tag.className = 'level-tag';
+        tag.textContent = `LEVEL ${String(level).padStart(2, '0')}`;
+        wrapper.appendChild(tag);
+
+        const svg = svgElement('svg', {
+          viewBox: '0 0 900 340',
+          role: 'group',
+          'aria-label': `Level ${level} perspective plane`
+        });
+        wrapper.appendChild(svg);
+
+        drawGrid(svg);
+
+        drawLabel(svg, 'H', -0.48, -0.48);
+        drawLabel(svg, 'M',  0.48, -0.48);
+        drawLabel(svg, 'S',  0.48,  0.48);
+        drawLabel(svg, 'B', -0.48,  0.48);
+
+        // Four interior checkpoints, one between each adjacent section.
+        drawCheckpoint(svg, level, 'HM',  0,    -0.62, 'H / M');
+        drawCheckpoint(svg, level, 'MS',  0.62,  0,    'M / S');
+        drawCheckpoint(svg, level, 'SB',  0,     0.62, 'S / B');
+        drawCheckpoint(svg, level, 'BH', -0.62,  0,    'B / H');
+
+        // Shared border checkpoints sit at the four corners of the diamond.
+        // West / East: left and right corners (mirrored state and stars).
+        drawCheckpoint(svg, level, 'WE', -1,  1, 'West / East');
+        drawCheckpoint(svg, level, 'WE',  1, -1, 'West / East');
+
+        // North / South: top and bottom corners (mirrored state and stars).
+        drawCheckpoint(svg, level, 'NS', -1, -1, 'North / South');
+        drawCheckpoint(svg, level, 'NS',  1,  1, 'North / South');
+
+        scene.appendChild(wrapper);
+      }
+
+      function refreshCheckpoints(saved = true) {
+        for (const { element, level, id, description } of checkpoints) {
+          const state = progress[level][id];
+          const label = `Level ${level}, ${description}: ${STATES[state]}`;
+          element.dataset.state = state;
+          element.setAttribute('aria-label', label);
+          element.setAttribute('title', `${label} (click to advance)`);
+        }
+
+        const completed = Object.values(progress)
+          .flatMap(level => Object.values(level))
+          .filter(state => state === 3).length;
+
+        status.textContent = saved
+          ? `${completed} / ${LEVEL_COUNT * CHECKPOINT_IDS.length} completed · Click a checkpoint to advance · Edit the number beneath it for stars remaining`
+          : 'Storage unavailable; changes may not persist.';
+      }
+
+      document.getElementById('reset').addEventListener('click', () => {
+        if (!confirm('Reset all checkpoints on both levels?')) return;
+        for (let level = 1; level <= LEVEL_COUNT; level++) {
+          for (const id of CHECKPOINT_IDS) {
+            progress[level][id] = 0;
+            stars[level][id] = null;
+          }
+        }
+        for (const { input } of starInputs) input.value = '';
+        refreshCheckpoints(saveProgress() && saveStars());
+      });
+
+      for (let level = 1; level <= LEVEL_COUNT; level++) drawPlane(level);
+      refreshCheckpoints();
+    })();
+  </script>
+</body>
+</html>
