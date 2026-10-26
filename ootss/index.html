@@ -132,7 +132,7 @@
         }
 
         const progress = {};
-        for (let level = 1; level <= LEVEL_COUNT; level++) {
+        for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) {
           progress[level] = {};
           for (const id of CHECKPOINT_IDS) {
             const value = Number(saved?.[level]?.[id]);
@@ -154,7 +154,7 @@
         }
 
         const result = {};
-        for (let level = 1; level <= LEVEL_COUNT; level++) {
+        for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) {
           result[level] = {};
           for (const id of CHECKPOINT_IDS) {
             const value = saved?.[level]?.[id];
@@ -374,7 +374,7 @@
 
       document.getElementById('reset').addEventListener('click', () => {
         if (!confirm('Reset all checkpoints on both levels?')) return;
-        for (let level = 1; level <= LEVEL_COUNT; level++) {
+        for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) {
           for (const id of CHECKPOINT_IDS) {
             progress[level][id] = 0;
             stars[level][id] = null;
@@ -384,7 +384,7 @@
         refreshCheckpoints(saveProgress() && saveStars());
       });
 
-      for (let level = 1; level <= LEVEL_COUNT; level++) drawPlane(level);
+      for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) drawPlane(level);
       refreshCheckpoints();
     })();
   </script>
