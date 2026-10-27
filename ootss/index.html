@@ -58,12 +58,20 @@
     .checkpoint .glyph { fill: #000; font: 700 13px Consolas, monospace; text-anchor: middle; dominant-baseline: middle; pointer-events: none; }
     .checkpoint:not([data-state="3"]) .glyph { display: none; }
 
-    /* Editable remaining-star count beneath each checkpoint. */
+    /* Two compact counters, centered beneath each checkpoint. */
+    .star-counters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+      height: 20px;
+    }
+
     .star-input {
-      width: 36px;
+      width: 32px;
       height: 19px;
       padding: 0;
-      border: 1px solid #555;
+      border: 1px solid #fff;
       border-radius: 2px;
       background: #000;
       color: #fff;
@@ -72,7 +80,11 @@
       appearance: textfield;
       -moz-appearance: textfield;
     }
-    .star-input:focus { outline: 1px solid #fff; border-color: #fff; }
+
+    /* Regular stars: white; special stars: grey. */
+    .star-input.special-star-input { border-color: #777; color: #aaa; }
+
+    .star-input:focus { outline: 1px solid #fff; }
     .star-input::-webkit-inner-spin-button,
     .star-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
 
@@ -116,6 +128,7 @@
       const STORAGE_KEY = 'plane-checkpoints-v2';
       const STARS_STORAGE_KEY = 'plane-checkpoints-stars-v1';
       const LEVEL_COUNT = 2;
+      const SPECIAL_STARS_STORAGE_KEY = 'plane-checkpoints-special-stars-v1';
       const CHECKPOINT_IDS = ['HM', 'MS', 'SB', 'BH', 'WE', 'NS'];
       const STATES = ['Undiscovered', 'Discovered', 'Open', 'Completed'];
       const SVG_NS = 'http://www.w3.org/2000/svg';
@@ -124,6 +137,7 @@
       const status = document.getElementById('status');
       const checkpoints = [];
       const starInputs = [];
+      const specialStarInputs = [];
 
       function loadProgress() {
         let saved = {};
@@ -168,6 +182,48 @@
 
       const progress = loadProgress();
       const stars = loadStars();
+
+      // Special stars have their own storage key; existing star counts are untouched.
+      function loadSpecialStars() {
+        let saved = {};
+        try {
+          saved = JSON.parse(localStorage.getItem(SPECIAL_STARS_STORAGE_KEY) || '{}') || {};
+        } catch (error) {
+          console.warn('Could not read special stars:', error);
+        }
+
+        const result = {};
+        for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) {
+          result[level] = {};
+          for (const id of CHECKPOINT_IDS) {
+            const value = saved?.[level]?.[id];
+            result[level][id] = Number.isInteger(value) && value >= 0 ? value : null;
+          }
+        }
+        return result;
+      }
+
+      const specialStars = loadSpecialStars();
+
+      function updateSpecialStars(level, id, value) {
+        if (value !== '' && !/^\d+$/.test(value)) return;
+        specialStars[level][id] = value === '' ? null : Number(value);
+
+        let saved = true;
+        try {
+          localStorage.setItem(SPECIAL_STARS_STORAGE_KEY, JSON.stringify(specialStars));
+        } catch (error) {
+          console.warn('Could not save special stars:', error);
+          saved = false;
+        }
+
+        for (const entry of specialStarInputs) {
+          if (entry.level === level && entry.id === id && entry.input !== document.activeElement) {
+            entry.input.value = specialStars[level][id] ?? '';
+          }
+        }
+        refreshCheckpoints(saved);
+      }
 
       function saveStars() {
         try {
@@ -296,23 +352,35 @@
 
         checkpoints.push({ element: group, level, id, description });
 
-        // Separate number input: editing stars never advances the checkpoint state.
+        // Two independent counters below the checkpoint: regular and special stars.
+        // Mirrored border checkpoints share both counts.
         const inputContainer = svgElement('foreignObject', {
-          x: cx - 18, y: cy + 11, width: 36, height: 22
+          x: cx - 34, y: cy + 11, width: 68, height: 22
         }, svg);
-        const input = document.createElement('input');
-        input.className = 'star-input';
-        input.type = 'number';
-        input.min = '0';
-        input.step = '1';
-        input.placeholder = '-';
-        input.value = stars[level][id] ?? '';
-        input.setAttribute('aria-label', `Level ${level}, ${description}, stars remaining`);
-        input.title = `Stars remaining · Level ${level} · ${description}`;
-        input.addEventListener('input', () => updateStars(level, id, input.value));
-        input.addEventListener('click', event => event.stopPropagation());
-        inputContainer.appendChild(input);
-        starInputs.push({ input, level, id });
+
+        const counterBox = document.createElement('div');
+        counterBox.className = 'star-counters';
+
+        function addCounter(value, title, onChange, registry, isSpecial = false) {
+          const input = document.createElement('input');
+          input.className = isSpecial ? 'star-input special-star-input' : 'star-input';
+          input.type = 'number';
+          input.min = '0';
+          input.step = '1';
+          input.placeholder = '-';
+          input.value = value ?? '';
+          input.title = title;
+          input.setAttribute('aria-label', `Level ${level}, ${description}, ${title}`);
+          input.addEventListener('input', () => onChange(level, id, input.value));
+          input.addEventListener('click', event => event.stopPropagation());
+
+          counterBox.appendChild(input);
+          registry.push({ input, level, id });
+        }
+
+        addCounter(stars[level][id], 'Regular stars remaining', updateStars, starInputs);
+        addCounter(specialStars[level][id], 'Special stars remaining', updateSpecialStars, specialStarInputs, true);
+        inputContainer.appendChild(counterBox);
       }
 
       function drawPlane(level) {
@@ -370,7 +438,7 @@
           .filter(state => state === 3).length;
 
         status.textContent = saved
-          ? `${completed} / ${LEVEL_COUNT * CHECKPOINT_IDS.length} completed · Click a checkpoint to advance · Edit the number beneath it for stars remaining`
+          ? `${completed} / ${LEVEL_COUNT * CHECKPOINT_IDS.length} completed · Click a checkpoint to advance`
           : 'Storage unavailable; changes may not persist.';
       }
 
@@ -380,10 +448,17 @@
           for (const id of CHECKPOINT_IDS) {
             progress[level][id] = 0;
             stars[level][id] = null;
+            specialStars[level][id] = null;
           }
         }
-        for (const { input } of starInputs) input.value = '';
-        refreshCheckpoints(saveProgress() && saveStars());
+        for (const { input } of [...starInputs, ...specialStarInputs]) input.value = '';
+        let saved = saveProgress() && saveStars();
+        try {
+          localStorage.setItem(SPECIAL_STARS_STORAGE_KEY, JSON.stringify(specialStars));
+        } catch (error) {
+          saved = false;
+        }
+        refreshCheckpoints(saved);
       });
 
       for (let level = LEVEL_COUNT-1; 0 <= level && level < LEVEL_COUNT; level--) drawPlane(level);
