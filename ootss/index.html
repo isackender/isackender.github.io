@@ -406,11 +406,24 @@
         drawLabel(svg, 'S',  0.48,  0.48);
         drawLabel(svg, 'B', -0.48,  0.48);
 
-        // Four interior checkpoints, one between each adjacent section.
-        drawCheckpoint(svg, level, 'HM',  0,    -0.62, 'H / M');
-        drawCheckpoint(svg, level, 'MS',  0.62,  0,    'M / S');
-        drawCheckpoint(svg, level, 'SB',  0,     0.62, 'S / B');
-        drawCheckpoint(svg, level, 'BH', -0.62,  0,    'B / H');
+        // Level 01: checkpoints are inside the four sections, not on boundaries.
+        // Existing checkpoint IDs are retained to preserve localStorage progress.
+        // Adjust SECTION_OFFSET to move all four checkpoints closer to or farther
+        // from the centre without changing their state or star counts.
+        if (level === 1) {
+          const SECTION_OFFSET = 0.33;
+
+          drawCheckpoint(svg, level, 'HM', -SECTION_OFFSET, -SECTION_OFFSET, 'H');
+          drawCheckpoint(svg, level, 'MS',  SECTION_OFFSET, -SECTION_OFFSET, 'M');
+          drawCheckpoint(svg, level, 'SB',  SECTION_OFFSET,  SECTION_OFFSET, 'S');
+          drawCheckpoint(svg, level, 'BH', -SECTION_OFFSET,  SECTION_OFFSET, 'B');
+        } else {
+          // Level 00: keep checkpoints at the intersections between sections.
+          drawCheckpoint(svg, level, 'HM',  0,    -0.62, 'H / M');
+          drawCheckpoint(svg, level, 'MS',  0.62,  0,    'M / S');
+          drawCheckpoint(svg, level, 'SB',  0,     0.62, 'S / B');
+          drawCheckpoint(svg, level, 'BH', -0.62,  0,    'B / H');
+        }
 
         // Shared border checkpoints sit at the four corners of the diamond.
         // West / East: left and right corners (mirrored state and stars).
